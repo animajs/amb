@@ -1,0 +1,35 @@
+{
+  "name": "amb",
+  "version": "0.1.0",
+  "description": "Alipay mobile builder.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chencheng <sorrycc@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "umi": "0.0.1",
+    "commander": "~2.2.0",
+    "event-stream": "~3.1.2",
+    "chalk": "~0.4.0",
+    "gulp": "~3.6.0",
+    "gulp-template": "~0.1.1",
+    "eventproxy": "~0.3.1",
+    "father": "~0.5.4",
+    "umi2": "0.0.1",
+    "gulp-if": "~1.0.0",
+    "gulp-cssmin": "~0.1.4",
+    "gulp-uglify": "~0.2.1",
+    "gulp-less": "~1.2.3",
+    "gulp-flatten": "0.0.2",
+    "gulp-header": "~1.0.2",
+    "gulp-footer": "~1.0.4",
+    "gulp-wrapper": "~0.1.32",
+    "gulp-coffee": "~1.4.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "should": "~3.3.1"
+  }
+}

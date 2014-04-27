@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+'use strict';
+
+var program = require('commander');
+var path = require('path');
+var EventProxy = require('eventproxy');
+var Package = require('father').SpmPackage;
+var buildFile = require('../lib/build-file');
+var gulp = require('gulp');
+var chalk = require('chalk');
+
+program
+  .usage('PROJECT_PATH')
+  .option('-w, --watch', 'watch for file changes and rebuild automatically')
+  .parse(process.argv);
+
+if (program.watch) {
+  console.log(chalk.bgBlue('start watching'));
+  gulp.watch('src/**/*.+(html|css|js|coffee|less)', function() {
+    build();
+  });
+}
+build();
+
+
+function build() {
+  var pkg = require(path.join(process.cwd(), './package'));
+  if (!pkg || !pkg.spm) {
+    console.error('error: spm should be in package.json');
+    return;
+  }
+
+  var ep = new EventProxy();
+  ep.after('build', pkg.spm.output.length, function() {
+    console.log('done');
+  });
+
+  var files = pkg.spm.output;
+  console.log(chalk.green('build...'));
+  files.forEach(function build(file) {
+    console.log('  ' + file);
+    var opts = {
+      dest: './dist/',
+      pkg: new Package(process.cwd())
+    };
+    buildFile(file, opts, function() {
+      ep.emit('build');
+    });
+  });
+}

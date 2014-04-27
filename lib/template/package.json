@@ -1,0 +1,11 @@
+{
+  "name": "<%= projName %>",
+  "version": "1.0.0",
+  "spm": {
+    "output": [
+      "src/js/index.js",
+      "src/css/index.css",
+      "src/html/index.html"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+'use strict';
+
+var debug = require('debug')('amb');
+var program = require('commander');
+var fs = require('fs');
+var path = require('path');
+var amb = require('../');
+var spawn = require('child_process').spawn;
+
+process.on('exit', function() {
+  // console.log();
+});
+
+program
+  .version(require('../package').version, '-v, --version')
+  .parse(process.argv);
+
+var subcmd = program.args[0];
+debug('amb %s', subcmd);
+
+if (!subcmd) {
+  return program.help();
+}
+
+var bin = path.join(__dirname, 'amb-' + subcmd);
+if (fs.existsSync(bin)) {
+  // return require('./' + bin);
+  var args = process.argv.slice(3);
+  spawn(bin, args, {stdio: 'inherit'});
+}
+
+debug('subcmd is not valid: $ amb $s', subcmd);

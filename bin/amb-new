@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+'use strict';
+
+var path = require('path');
+var fs = require('fs');
+var program = require('commander');
+var gulp = require('gulp');
+var template = require('gulp-template');
+var chalk = require('chalk');
+
+program
+  .usage('PROJECT_PATH')
+  .parse(process.argv);
+
+var projPath = program.args[0];
+var projName = path.basename(projPath);
+if (!projPath) {
+  return program.help();
+}
+
+
+console.log(chalk.bgBlue('Generating new project: "%s"'), projName);
+
+var tmplDir = path.join(__dirname, '../lib/template/**');
+var destDir = path.join(process.cwd(), projPath);
+
+gulp.src(tmplDir)
+
+  // template
+  .pipe(template({
+    projName: projName
+  }))
+
+  // copy
+  .pipe(gulp.dest(destDir))
+
+  // console outputs
+  .on('data', function(file) {
+    if (!fs.statSync(file.path).isFile()) return;
+    console.log('  Writing %s...%s', file.relative, chalk.green('OK'));
+  })
+  .on('end', function() {
+    console.log(chalk.green('Done'));
+  });
