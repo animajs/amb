@@ -5,6 +5,7 @@ var debug = require('debug')('amb');
 var program = require('commander');
 var fs = require('fs');
 var path = require('path');
+var chalk = require('chalk');
 var amb = require('../');
 var spawn = require('child_process').spawn;
 
@@ -20,6 +21,7 @@ var subcmd = program.args[0];
 debug('amb %s', subcmd);
 
 if (!subcmd) {
+  console.log('\n  %s (v%s)', chalk.bold.white('Alipay Mobile Builder.'), require('../package').version);
   return program.help();
 }
 
