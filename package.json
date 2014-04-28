@@ -4,7 +4,7 @@
   "description": "Alipay mobile builder.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec --require should ./test/"
+    "test": "./node_modules/.bin/mocha --reporter spec --require should -t 50000 ./test/"
   },
   "author": "chencheng <sorrycc@gmail.com>",
   "license": "MIT",
@@ -28,10 +28,14 @@
     "gulp-wrapper": "~0.1.32",
     "gulp-coffee": "~1.4.2",
     "cheerio": "~0.15.0",
-    "request": "~2.34.0"
+    "request": "~2.34.0",
+    "cdn": "~0.2.7",
+    "async": "~0.6.2",
+    "mkdirp": "~0.4.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
-    "should": "~3.3.1"
+    "should": "~3.3.1",
+    "sinon": "~1.9.1"
   }
 }
