@@ -21,7 +21,7 @@ if (!projPath) {
 
 console.log(chalk.white.bold('Generating new project:'), chalk.green(projName));
 
-var tmplDir = path.join(__dirname, '../lib/template/**');
+var tmplDir = path.join(__dirname, '../lib/template/default/**');
 var destDir = path.join(process.cwd(), projPath);
 
 gulp.src(tmplDir)
