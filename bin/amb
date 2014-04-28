@@ -32,4 +32,4 @@ if (fs.existsSync(bin)) {
   spawn(bin, args, {stdio: 'inherit'});
 }
 
-debug('subcmd is not valid: $ amb $s', subcmd);
+debug('subcmd is not valid: $ amb %s', subcmd);
