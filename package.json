@@ -27,7 +27,8 @@
     "gulp-footer": "~1.0.4",
     "gulp-wrapper": "~0.1.32",
     "gulp-coffee": "~1.4.2",
-    "cheerio": "~0.15.0"
+    "cheerio": "~0.15.0",
+    "request": "~2.34.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

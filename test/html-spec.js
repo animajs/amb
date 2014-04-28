@@ -35,6 +35,13 @@ describe('html', function() {
       inline('<script src=fixtures/a.js inline charset=utf-8></script>', __dirname).should.be.eql(exceptData);
     });
 
+    it('inline with remote assets', function(done) {
+      inline('<script src=http://a.tbcdn.cn/cdnstatus.js inline></script>', __dirname, function(err, data) {
+        data.should.be.eql('<script>g_prefetch(true, [], 0.1);\n</script>');
+        done();
+      });
+    });
+
     it('inline with gulp', function(done) {
       gulp.src('test/fixtures/a.html')
         .pipe(inline.gulp())
