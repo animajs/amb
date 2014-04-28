@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+var debug = require('debug')('amb:build');
 var program = require('commander');
 var path = require('path');
 var EventProxy = require('eventproxy');
@@ -30,13 +31,32 @@ function build() {
     return;
   }
 
-  var ep = new EventProxy();
-  ep.after('build', pkg.spm.output.length, function() {
-    // console.log('done');
+  var files = pkg.spm.output;
+  var cssjsfiles = [];
+  var htmlfiles = [];
+  files.forEach(function(file) {
+    var isHTMLFile = /\.html$/.test(file);
+    if (isHTMLFile) {
+      htmlfiles.push(file);
+    } else {
+      cssjsfiles.push(file);
+    }
   });
 
-  var files = pkg.spm.output;
   console.log(chalk.white.bold('Building Project'));
+  debug('building css, js');
+  buildFiles(cssjsfiles, function() {
+    debug('building html');
+    buildFiles(htmlfiles);
+  });
+}
+
+function buildFiles(files, cb) {
+  var ep = new EventProxy();
+  ep.after('build', files.length, function() {
+    cb && cb();
+  });
+
   files.forEach(function build(file) {
     var start = new Date();
     var opts = {
