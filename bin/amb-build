@@ -43,8 +43,8 @@ function build() {
       dest: './dist/',
       pkg: new Package(process.cwd())
     };
-    buildFile(file, opts, function() {
-      console.log('build: %s in %s ms', chalk.green(file), new Date() - start);
+    buildFile(file, opts, function(destFile) {
+      console.log('build: %s in %s ms', chalk.green(destFile), new Date() - start);
       ep.emit('build');
     });
   });
