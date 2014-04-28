@@ -15,7 +15,7 @@ program
   .parse(process.argv);
 
 if (program.watch) {
-  console.log(chalk.bgBlue('start watching'));
+  console.log(chalk.underline('Start watching...'));
   gulp.watch('src/**/*.+(html|css|js|coffee|less)', function() {
     build();
   });
@@ -32,18 +32,19 @@ function build() {
 
   var ep = new EventProxy();
   ep.after('build', pkg.spm.output.length, function() {
-    console.log('done');
+    // console.log('done');
   });
 
   var files = pkg.spm.output;
-  console.log(chalk.green('build...'));
+  console.log(chalk.white.bold('Building Project'));
   files.forEach(function build(file) {
-    console.log('  ' + file);
+    var start = new Date();
     var opts = {
       dest: './dist/',
       pkg: new Package(process.cwd())
     };
     buildFile(file, opts, function() {
+      console.log('build: %s in %s ms', chalk.green(file), new Date() - start);
       ep.emit('build');
     });
   });

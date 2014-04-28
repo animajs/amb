@@ -19,7 +19,7 @@ if (!projPath) {
 }
 
 
-console.log(chalk.bgBlue('Generating new project: "%s"'), projName);
+console.log(chalk.white.bold('Generating new project:'), chalk.green(projName));
 
 var tmplDir = path.join(__dirname, '../lib/template/**');
 var destDir = path.join(process.cwd(), projPath);
@@ -37,8 +37,8 @@ gulp.src(tmplDir)
   // console outputs
   .on('data', function(file) {
     if (!fs.statSync(file.path).isFile()) return;
-    console.log('  Writing %s...%s', file.relative, chalk.green('OK'));
+    console.log('Creating %s', file.relative);
   })
   .on('end', function() {
-    console.log(chalk.green('Done'));
+    // console.log(chalk.green('Done'));
   });
