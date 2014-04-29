@@ -1,15 +1,9 @@
 /**
  * Sea.js 2.3.0 | seajs.org/LICENSE.md
  */
+
+var define;
 (function(global, undefined) {
-
-// Avoid conflicting when `sea.js` is loaded multiple times
-if (global.define) {
-  return
-}
-
-
-var data = {}
 
 
 /**
@@ -106,7 +100,7 @@ Module.prototype.exec = function () {
 }
 
 // Define a module
-Module.define = function (id, deps, factory) {
+define = function (id, deps, factory) {
   var argsLen = arguments.length
 
   // define(factory)
@@ -173,11 +167,10 @@ Module.use = function (ids, callback, uri) {
 
 // Public API
 
-global.define = Module.define
 
-global.define.use = function(ids, callback) {
+define.use = function(ids, callback) {
   Module.use(ids, callback, cwd + "_use_" + cid())
-  return global.define
+  return define
 }
 
 
@@ -186,6 +179,6 @@ global.define.use = function(ids, callback) {
  */
 
 // The current working directory
-global.define.cwd = cwd
-global.define.cache = cachedMods
+define.cwd = cwd
+define.cache = cachedMods
 })(this);
