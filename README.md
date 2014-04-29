@@ -1,4 +1,4 @@
 # amb
 
-Alipay mobile builder. (still in development)
+Alipay mobile builder. (under development)
 
