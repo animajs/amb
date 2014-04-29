@@ -31,8 +31,8 @@ describe('util', function() {
       '<link rel="stylesheet" href="http://localhost/a.css" />' +
       '<link rel="stylesheet" href="http://localhost/b.css" />';
     util
-      .groupHTML(html, 'http://localhost/c.css', 'css', ['http://localhost/a.css', 'http://localhost/b.css'])
-      .should.be.eql('<link rel="stylesheet" href="http://localhost/c.css" />');
+      .groupHTML(html, 'http://localhost/c.css', 'css', ['http://localhost/a.css', 'http://localhost/b.css'], 'a')
+      .should.be.eql('<link group="a" rel="stylesheet" href="http://localhost/c.css" />');
   });
 
   it('groupHTML (js)', function() {
@@ -40,8 +40,8 @@ describe('util', function() {
       '<script src="http://localhost/a.js"></script>' +
       '<script src="http://localhost/b.js"></script>';
     util
-      .groupHTML(html, 'http://localhost/c.js', 'js', ['http://localhost/a.js', 'http://localhost/b.js'])
-      .should.be.eql('<script src="http://localhost/c.js"></script>');
+      .groupHTML(html, 'http://localhost/c.js', 'js', ['http://localhost/a.js', 'http://localhost/b.js'], 'a')
+      .should.be.eql('<script group="a" src="http://localhost/c.js"></script>');
   });
 
 });

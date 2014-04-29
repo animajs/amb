@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var gulp = require('gulp');
 var es = require('event-stream');
+var $ = require('cheerio');
 var html = require('../lib/html');
 var util = require('../lib/util');
 
@@ -41,6 +42,18 @@ describe('group', function() {
       data.should.be.containEql('a.alipayobjects.com');
       done();
     });
+  });
+
+  it('group with gulp', function(done) {
+    gulp.src('test/fixtures/group/a.html')
+      .pipe(group.gulp())
+      .pipe(es.map(function(file, cb) {
+        var html = String(file.contents);
+        $('link', html).length.should.be.eql(2);
+        $('script', html).length.should.be.eql(2);
+        cb(null, file);
+      }))
+      .on('end', done);
   });
 
 });
