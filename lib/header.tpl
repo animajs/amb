@@ -8,12 +8,8 @@ if (global.define) {
   return
 }
 
-var seajs = {
-  // The current version of Sea.js being used
-  version: "2.3.0"
-}
 
-var data = seajs.data = {}
+var data = {}
 
 
 /**
@@ -56,7 +52,7 @@ var cwd = dirname(location.href)
  * module.js - The core of module loader
  */
 
-var cachedMods = seajs.cache = {}
+var cachedMods = {}
 
 function Module(uri, deps) {
   this.uri = uri
@@ -180,14 +176,9 @@ Module.use = function (ids, callback, uri) {
 global.define = Module.define
 
 global.define.use = function(ids, callback) {
-  Module.use(ids, callback, data.cwd + "_use_" + cid())
+  Module.use(ids, callback, cwd + "_use_" + cid())
   return global.define
 }
-
-// For Developers
-
-data.cid = cid
-
 
 
 /**
@@ -195,6 +186,6 @@ data.cid = cid
  */
 
 // The current working directory
-data.cwd = cwd
-
+global.define.cwd = cwd
+global.define.cache = cachedMods
 })(this);
