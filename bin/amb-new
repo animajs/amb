@@ -7,6 +7,7 @@ var program = require('commander');
 var gulp = require('gulp');
 var template = require('gulp-template');
 var chalk = require('chalk');
+var tildify = require('tildify');
 
 program
   .usage('PROJECT_PATH')
@@ -19,10 +20,17 @@ if (!projPath) {
 }
 
 
-console.log(chalk.white.bold('Generating new project:'), chalk.green(projName));
-
 var tmplDir = path.join(__dirname, '../lib/template/default/**');
-var destDir = path.join(process.cwd(), projPath);
+if (projPath[0] != '/') {
+  projPath = path.join(process.cwd(), projPath);
+}
+
+if (fs.existsSync(projPath)) {
+  console.error(chalk.red('error:') + ' %s is existed.', chalk.white.bold(tildify(projPath)));
+  return;
+}
+
+console.log(chalk.white.bold('Generating new project:'), chalk.green(projName));
 
 gulp.src(tmplDir)
 
@@ -32,7 +40,7 @@ gulp.src(tmplDir)
   }))
 
   // copy
-  .pipe(gulp.dest(destDir))
+  .pipe(gulp.dest(projPath))
 
   // console outputs
   .on('data', function(file) {
