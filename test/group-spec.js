@@ -11,6 +11,19 @@ var util = require('../lib/util');
 describe('group', function() {
   var group = html.group;
 
+  // Fake util.upload
+  var _upload = util.upload;
+  before(function() {
+    util.upload = function(a, b, next) {
+      next(null, 'http://a.alipayobjects.com/a.js');
+    };
+  });
+  after(function() {
+    util.upload = _upload;
+  });
+
+  after(function() {});
+
   it('do not group by default', function() {
     var data = '<link rel="stylesheet" href="a.css" /><script src="b.js"></script>';
     group(data).should.be.eql(data);
@@ -20,11 +33,6 @@ describe('group', function() {
     var data = '<link rel="stylesheet" href="http://g.tbcdn.cn/tb/global/2.7.1/global-min.css" /><script src="b.js"></script>';
     group(data).should.be.eql(data);
   });
-
-  // Fake util.upload
-  util.upload = function(a, b, next) {
-    next(null, 'http://a.alipayobjects.com/a.js');
-  };
 
   it('group css', function(done) {
     var html = '<link rel="stylesheet" href="http://a.tbcdn.cn/cdnstatus.js" group="a">'
