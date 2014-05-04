@@ -34,7 +34,8 @@
     "mkdirp": "~0.4.0",
     "tildify": "~0.2.0",
     "peaches": "~0.5.18",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "spm3-anima": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
