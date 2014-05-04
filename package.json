@@ -32,7 +32,8 @@
     "cdn": "~0.2.8",
     "async": "~0.6.2",
     "mkdirp": "~0.4.0",
-    "tildify": "~0.2.0"
+    "tildify": "~0.2.0",
+    "peaches": "~0.5.18"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

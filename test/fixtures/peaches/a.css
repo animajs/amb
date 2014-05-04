@@ -1,0 +1,13 @@
+/* alice.example 样式模块 */
+
+.ui-example {
+    background: url(https://i.alipayobjects.com/e/201111/268mFOUNIJ.jpg);
+    height: auto;
+    width: auto;
+}
+
+.ui-example-sub {
+    background: url(https://i.alipayobjects.com/e/201208/19xSiKsccX.jpg);
+    height: auto;
+    width: auto;
+}
