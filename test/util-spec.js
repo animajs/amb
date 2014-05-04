@@ -1,5 +1,6 @@
 'use strict';
 
+var path = require('path');
 var util = require('../lib/util');
 
 describe('util', function() {
@@ -42,6 +43,26 @@ describe('util', function() {
     util
       .groupHTML(html, 'http://localhost/c.js', 'js', ['http://localhost/a.js', 'http://localhost/b.js'], 'a')
       .should.be.eql('<script group="a" src="http://localhost/c.js"></script>');
+  });
+
+  describe('md5', function() {
+    var file = function(filepath) {
+      return path.join(__dirname, filepath);
+    };
+
+    it('md5 with string', function(done) {
+      util.md5(file('./fixtures/md5/a.css'), function(e, results) {
+        results.should.be.eql(['d5364e0d4c0174e4a30cea9a03af036d']);
+        done();
+      });
+    });
+
+    it('md5 with array', function(done) {
+      util.md5([file('./fixtures/md5/a.css'), file('./fixtures/md5/a.js')], function(e, results) {
+        results.should.be.eql(['d5364e0d4c0174e4a30cea9a03af036d', '438d20078f6f20c0480155c5bdaa588e']);
+        done();
+      });
+    });
   });
 
 });
