@@ -5,12 +5,24 @@ var util = require('../lib/util');
 
 describe('util', function() {
 
-  // it('upload', function(done) {
-  //   util.upload('foo', 'js', function(err, url) {
-  //     url.should.be.startWith('https://a.alipayobjects.com/');
-  //     done();
-  //   });
-  // });
+  // Fake util.cdn
+  var _cdn = util.cdn;
+  before(function() {
+    util.cdn = function(file, callback) {
+      callback(null, util.format('http://localhost/%s', path.basename(file)));
+    };
+  });
+  after(function() {
+    util.cdn = _cdn;
+  });
+
+  it('upload', function(done) {
+    util.upload('foo', 'js', function(err, url) {
+      url.should.be.startWith('http://localhost/');
+      url.should.be.endWith('.js');
+      done();
+    });
+  });
 
   it('removeExt', function() {
     util.removeExt('/foo/bar.js').should.be.eql('/foo/bar');
