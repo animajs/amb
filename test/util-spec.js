@@ -62,18 +62,12 @@ describe('util', function() {
       return path.join(__dirname, filepath);
     };
 
-    it('md5 with string', function(done) {
-      util.md5(file('./fixtures/md5/a.css'), function(e, results) {
-        results.should.be.eql(['d5364e0d4c0174e4a30cea9a03af036d']);
-        done();
-      });
+    it('md5 with string', function() {
+      util.md5(file('./fixtures/md5/a.css')).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab']);
     });
 
-    it('md5 with array', function(done) {
-      util.md5([file('./fixtures/md5/a.css'), file('./fixtures/md5/a.js')], function(e, results) {
-        results.should.be.eql(['d5364e0d4c0174e4a30cea9a03af036d', '438d20078f6f20c0480155c5bdaa588e']);
-        done();
-      });
+    it('md5 with array', function() {
+      util.md5([file('./fixtures/md5/a.css'), file('./fixtures/md5/a.js')]).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab', '2b60f4a12138abd3fbd063b80af5d5bf']);
     });
   });
 
