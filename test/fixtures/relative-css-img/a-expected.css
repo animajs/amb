@@ -1,0 +1,6 @@
+a {
+  background: url(http://localhost/dog.jpg);
+  background: url("http://localhost/dog.jpg");
+  background: url('http://localhost/dog.jpg');
+  color: red;
+}
