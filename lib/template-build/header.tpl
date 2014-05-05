@@ -173,14 +173,6 @@ define.use = function(ids, callback) {
   return define
 }
 
-define.require = function(id) {
-  var mod = Module.get(id)
-  if (mod.exports === undefined) {
-    mod.exec();
-  }
-  return mod.exports
-}
-
 
 define.require = function(id) {
   var mod = Module.get(id)
