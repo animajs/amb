@@ -35,7 +35,8 @@
     "tildify": "~0.2.0",
     "peaches": "~0.5.18",
     "lodash": "~2.4.1",
-    "spm3-anima": "^3.0.0"
+    "spm3-anima": "^3.0.0",
+    "imagemin": "^0.4.5"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

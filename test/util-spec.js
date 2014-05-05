@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var fs = require('fs');
 var util = require('../lib/util');
 
 describe('util', function() {
@@ -68,6 +69,18 @@ describe('util', function() {
 
     it('md5 with array', function() {
       util.md5([file('./fixtures/md5/a.css'), file('./fixtures/md5/a.js')]).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab', '2b60f4a12138abd3fbd063b80af5d5bf']);
+    });
+  });
+
+  it('imagemin', function(done) {
+    var files = [
+      path.join(__dirname, './fixtures/imagemin/a.jpg'),
+      path.join(__dirname, './fixtures/imagemin/a.png')
+    ];
+    util.imagemin(files, function(err, result) {
+      fs.statSync(result[0]).size.should.be.lessThan(160000);
+      fs.statSync(result[1]).size.should.be.lessThan(65000);
+      done();
     });
   });
 
