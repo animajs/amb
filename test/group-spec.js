@@ -22,8 +22,6 @@ describe('group', function() {
     util.upload = _upload;
   });
 
-  after(function() {});
-
   it('do not group by default', function() {
     var data = '<link rel="stylesheet" href="a.css" /><script src="b.js"></script>';
     group(data).should.be.eql(data);
@@ -38,7 +36,7 @@ describe('group', function() {
     var html = '<link rel="stylesheet" href="http://a.tbcdn.cn/cdnstatus.js" group="a">'
       +'<link rel="stylesheet" href="https://s.tbcdn.cn/cdnstatus.js" group="a">';
     group(html, function(err, data) {
-      data.should.be.eql('<link group="a" rel="stylesheet" href="__url__" />');
+      data.should.be.eql('<link rel="stylesheet" href="__url__" group="a">');
       done();
     });
   });
@@ -47,7 +45,16 @@ describe('group', function() {
     var html = '<script src="http://a.tbcdn.cn/cdnstatus.js" group="a"></script>'
       +'<script src="https://s.tbcdn.cn/cdnstatus.js" group="a"></script>';
     group(html, function(err, data) {
-      data.should.be.eql('<script group="a" src="__url__"></script>');
+      data.should.be.eql('<script src="__url__" group="a"></script>');
+      done();
+    });
+  });
+
+  it('reverse attributes', function(done) {
+    var html = '<script src="http://a.tbcdn.cn/cdnstatus.js" group="a" inline foo=bar></script>'
+      +'<script src="https://s.tbcdn.cn/cdnstatus.js" group="a"></script>';
+    group(html, function(err, data) {
+      data.should.be.eql('<script src="__url__" group="a" inline="" foo="bar"></script>');
       done();
     });
   });
