@@ -13,6 +13,7 @@ var chalk = require('chalk');
 program
   .usage('PROJECT_PATH')
   .option('-w, --watch', 'watch for file changes and rebuild automatically')
+  .option('-s, --standalone <name>', 'build a standalone, UMD-wrapped version of the component with the given global name')
   .parse(process.argv);
 
 if (program.watch) {
@@ -61,7 +62,8 @@ function buildFiles(files, cb) {
     var start = new Date();
     var opts = {
       dest: './dist/',
-      pkg: new Package(process.cwd())
+      pkg: new Package(process.cwd()),
+      standalone: program.standalone
     };
     buildFile(file, opts, function(destFile) {
       console.log('build: %s in %s ms', chalk.green(destFile), new Date() - start);

@@ -1,0 +1,2 @@
+
+define.use("<%= main %>");
