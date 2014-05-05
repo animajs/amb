@@ -20,7 +20,7 @@ if (!projPath) {
 }
 
 
-var tmplDir = path.join(__dirname, '../lib/template-new/default/**');
+var tmplDir = path.join(__dirname, '../lib/template/new/default/**');
 if (projPath[0] != '/') {
   projPath = path.join(process.cwd(), projPath);
 }
