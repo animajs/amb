@@ -58,19 +58,19 @@ describe('util', function() {
       .should.be.eql('<script group="a" src="http://localhost/c.js"></script>');
   });
 
-  describe('md5', function() {
-    var file = function(filepath) {
-      return path.join(__dirname, filepath);
-    };
+  // describe('md5', function() {
+  //   var file = function(filepath) {
+  //     return path.join(__dirname, filepath);
+  //   };
 
-    it('md5 with string', function() {
-      util.md5(file('./fixtures/md5/a.css')).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab']);
-    });
+  //   it('md5 with string', function() {
+  //     util.md5(file('./fixtures/md5/a.css')).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab']);
+  //   });
 
-    it('md5 with array', function() {
-      util.md5([file('./fixtures/md5/a.css'), file('./fixtures/md5/a.js')]).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab', '2b60f4a12138abd3fbd063b80af5d5bf']);
-    });
-  });
+  //   it('md5 with array', function() {
+  //     util.md5([file('./fixtures/md5/a.css'), file('./fixtures/md5/a.js')]).should.be.eql(['37ea4bd847c40e41176877f77dfd3fab', '2b60f4a12138abd3fbd063b80af5d5bf']);
+  //   });
+  // });
 
   it('imagemin', function(done) {
     var files = [
