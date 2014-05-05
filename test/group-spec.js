@@ -15,7 +15,7 @@ describe('group', function() {
   var _upload = util.upload;
   before(function() {
     util.upload = function(a, b, next) {
-      next(null, 'http://a.alipayobjects.com/a.js');
+      next(null, '__url__');
     };
   });
   after(function() {
@@ -38,7 +38,7 @@ describe('group', function() {
     var html = '<link rel="stylesheet" href="http://a.tbcdn.cn/cdnstatus.js" group="a">'
       +'<link rel="stylesheet" href="https://s.tbcdn.cn/cdnstatus.js" group="a">';
     group(html, function(err, data) {
-      data.should.be.containEql('a.alipayobjects.com');
+      data.should.be.eql('<link group="a" rel="stylesheet" href="__url__" />');
       done();
     });
   });
@@ -47,7 +47,7 @@ describe('group', function() {
     var html = '<script src="http://a.tbcdn.cn/cdnstatus.js" group="a"></script>'
       +'<script src="https://s.tbcdn.cn/cdnstatus.js" group="a"></script>';
     group(html, function(err, data) {
-      data.should.be.containEql('a.alipayobjects.com');
+      data.should.be.eql('<script group="a" src="__url__"></script>');
       done();
     });
   });
