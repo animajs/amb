@@ -24,8 +24,9 @@
   },
 
   // js build opts
-  "bare": false,
   "standalone": false,
+  "bare": false,
+  "seajs-debug": false,
 
   "builder": {
 
