@@ -13,6 +13,7 @@ var chalk = require('chalk');
 var getConfig = require('../lib/config').get;
 var _ = require('lodash');
 var util = require('../lib/util');
+var spm = require('spm');
 
 program
   .option('-w, --watch', 'watch for file changes and rebuild automatically')
@@ -34,14 +35,13 @@ if (program.watch) {
 
 function run() {
   // build opt
-  var spm = require(path.join(process.cwd(), './package')).spm;
   var opt = getConfig();
   opt.pkg = new Package(process.cwd());
   if (program.standalone) opt.standalone = program.standalone;
   if (program.publish) opt.publish = program.publish;
 
   // filter html and jscss
-  var files = spm.output;
+  var files = require(path.join(process.cwd(), './package')).spm.output;
   var cssjsfiles = [];
   var htmlfiles = [];
   files.forEach(function(file) {
@@ -55,12 +55,17 @@ function run() {
 
   console.log(chalk.white.bold('Building Project'));
 
-  // build: img -> css, js -> html
-  buildImg(opt, function() {
-    buildFiles(cssjsfiles, opt, function() {
-      buildFiles(htmlfiles, opt);
+  // build: spm install -> img -> css, js -> html
+  spm.install({
+    source: opt["spm-source"],
+    query: []
+  }, function() {
+    buildImg(opt, function() {
+      buildFiles(cssjsfiles, opt, function() {
+        buildFiles(htmlfiles, opt);
+      });
     });
-  });
+  })
 }
 
 function buildFiles(files, opt, cb) {

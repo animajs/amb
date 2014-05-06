@@ -10,6 +10,8 @@
     "uglify"
   ],
 
+  "spm-source": "http://spmjs.io/",
+
   "img_src": "./src/img/",
   "dest": "./dist/",
 

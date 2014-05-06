@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-var spm = require('../lib/spm');
+var spm = require('spm');
 var program = require('commander');
+var getConfig = require('../lib/config').get;
 
 program
   .option('-s, --source [name]', 'the source repo name')
@@ -17,8 +18,9 @@ program
   .option('--no-color', 'disable colorful print')
   .parse(process.argv);
 
+var opt = getConfig();
 spm.install({
-  source: program.source,
+  source: program.source || opt["spm-source"],
   destination: program.destination,
   force: program.force,
   parallel: program.parallel,

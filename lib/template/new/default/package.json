@@ -6,6 +6,10 @@
       "src/js/index.js",
       "src/css/index.css",
       "src/html/index.html"
-    ]
+    ],
+    "dependencies": {
+    }
+  },
+  "amb": {
   }
 }
