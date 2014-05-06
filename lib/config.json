@@ -1,0 +1,56 @@
+{
+  "build-steps-in-publish": [
+    "imgmin",
+    "group",
+    "inline",
+    "htmlimg",
+    "cssimg",
+    "peaches",
+    "cssmin",
+    "uglify"
+  ],
+
+  "img-dir": "./src/img/",
+  "build-dir": "./dist/",
+
+  "img-upload-engine": {
+    "source": "tps",
+    "opt": {}
+  },
+
+  "jscss-upload-engine": {
+    "source": "alipaycdn",
+    "opt": {}
+  },
+
+  "builder": {
+
+    // html
+    "htmlgroup": {
+      "enable": true
+    },
+    "htmlinline": {
+      "enable": true
+    },
+    "htmlimg": {
+      "enable": true
+    },
+
+    // css
+    "cssimg": {
+      "enable": true
+    },
+    "cssmin": {
+      "enable": true
+    },
+    "peaches": {
+      "enable": true
+    },
+
+    // js
+    "peaches": {
+      "enable": true
+    }
+
+  }
+}
