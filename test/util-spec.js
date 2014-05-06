@@ -72,18 +72,6 @@ describe('util', function() {
   //   });
   // });
 
-  it('imagemin', function(done) {
-    var files = [
-      path.join(__dirname, './fixtures/imagemin/a.jpg'),
-      path.join(__dirname, './fixtures/imagemin/a.png')
-    ];
-    util.imagemin(files, function(err, result) {
-      fs.statSync(result[0]).size.should.be.lessThan(160000);
-      fs.statSync(result[1]).size.should.be.lessThan(65000);
-      done();
-    });
-  });
-
   it('extendOption', function() {
     var opt = util.extendOption({'a':{'enable':true}}, {'a':false,'b':true});
     opt.a.enable.should.be.eql(false);
