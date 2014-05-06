@@ -36,6 +36,7 @@ if (program.watch) {
 function run() {
   // build opt
   var opt = getConfig();
+  opt.include = 'all';
   opt.pkg = new Package(process.cwd());
   if (program.standalone) opt.standalone = program.standalone;
   if (program.publish) opt.publish = program.publish;
