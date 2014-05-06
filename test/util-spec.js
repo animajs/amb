@@ -84,4 +84,13 @@ describe('util', function() {
     });
   });
 
+  it('extendOption', function() {
+    var opt = util.extendOption({'a':{'enable':true}}, {'a':false,'b':true});
+    opt.a.enable.should.be.eql(false);
+    ('b' in opt).should.be.eql(false);
+
+    var opt2 = util.extendOption({'a':{'enable':true}}, {'a':{'enable':false}});
+    opt2.a.enable.should.be.eql(false);
+  });
+
 });

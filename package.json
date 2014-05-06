@@ -9,7 +9,7 @@
   "author": "chencheng <sorrycc@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "umi": "0.0.1",
+    "umi": "0.0.2",
     "commander": "~2.2.0",
     "event-stream": "~3.1.2",
     "chalk": "~0.4.0",
@@ -37,7 +37,9 @@
     "lodash": "~2.4.1",
     "spm3-anima": "^3.0.0",
     "imagemin": "^0.4.5",
-    "debug": "^0.8.1"
+    "debug": "^0.8.1",
+    "gulp-imagemin": "~0.5.0",
+    "node-json-minify": "~0.1.3-a"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

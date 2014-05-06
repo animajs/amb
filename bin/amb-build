@@ -6,67 +6,73 @@ var program = require('commander');
 var path = require('path');
 var EventProxy = require('eventproxy');
 var Package = require('father').SpmPackage;
-var buildFile = require('../lib/build-file');
+var buildFile = require('../lib/build').buildFile;
+var buildImg = require('../lib/build').buildImg;
 var gulp = require('gulp');
 var chalk = require('chalk');
+var getConfig = require('../lib/config').get;
+var _ = require('lodash');
+var util = require('../lib/util');
 
 program
-  .usage('PROJECT_PATH')
   .option('-w, --watch', 'watch for file changes and rebuild automatically')
   .option('-s, --standalone <name>', 'build a standalone, UMD-wrapped version of the component with the given global name')
+  .option('-p, --publish', 'build for publish')
   .parse(process.argv);
 
+run();
 if (program.watch) {
   console.log(chalk.underline('Start watching...'));
   gulp.watch('src/**/*.+(html|css|js|coffee|less)', function() {
-    build();
+    run();
   });
 }
-build();
 
 
-function build() {
-  var pkg = require(path.join(process.cwd(), './package'));
-  if (!pkg || !pkg.spm) {
-    console.error('error: spm should be in package.json');
-    return;
-  }
+//////////////////////
+// Methods.
 
-  var files = pkg.spm.output;
+function run() {
+  // build opt
+  var spm = require(path.join(process.cwd(), './package')).spm;
+  var opt = getConfig();
+  opt.pkg = new Package(process.cwd());
+  if (program.standalone) opt.standalone = program.standalone;
+  if (program.publish) opt.publish = program.publish;
+
+  // filter html and jscss
+  var files = spm.output;
   var cssjsfiles = [];
   var htmlfiles = [];
   files.forEach(function(file) {
-    var isHTMLFile = /\.html$/.test(file);
-    if (isHTMLFile) {
+    if (util.isHTMLFile(file)) {
       htmlfiles.push(file);
-    } else {
+    }
+    else if (util.isCSSFile(file) || util.isJSFile(file)) {
       cssjsfiles.push(file);
     }
   });
 
   console.log(chalk.white.bold('Building Project'));
-  debug('building css, js');
-  buildFiles(cssjsfiles, function() {
-    debug('building html');
-    buildFiles(htmlfiles);
+
+  // build: img -> css, js -> html
+  buildImg(opt, function() {
+    buildFiles(cssjsfiles, opt, function() {
+      buildFiles(htmlfiles, opt);
+    });
   });
 }
 
-function buildFiles(files, cb) {
+function buildFiles(files, opt, cb) {
   var ep = new EventProxy();
   ep.after('build', files.length, function() {
-    cb && cb();
+    cb && cb(null);
   });
 
   files.forEach(function build(file) {
     var start = new Date();
-    var opts = {
-      dest: './dist/',
-      pkg: new Package(process.cwd()),
-      standalone: program.standalone
-    };
-    buildFile(file, opts, function(destFile) {
-      console.log('build: %s in %s ms', chalk.green(destFile), new Date() - start);
+    buildFile(file, opt, function() {
+      console.log('build: %s in %s ms', chalk.green(path.basename(file)), new Date() - start);
       ep.emit('build');
     });
   });

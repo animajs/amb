@@ -4,10 +4,10 @@ var path = require('path');
 var fs = require('fs');
 var gulp = require('gulp');
 var es = require('event-stream');
-var relativeHTMLImg = require('../lib/html').relativeHTMLImg;
+var cssimg = require('../lib/css/cssimg');
 var util = require('../lib/util');
 
-describe('relativeHTMLImg', function() {
+describe('cssimg', function() {
 
   // Fake util.cdn
   var _cdn = util.cdn;
@@ -23,21 +23,21 @@ describe('relativeHTMLImg', function() {
   });
 
   it('do not upload if no img', function() {
-    relativeHTMLImg('<div></div>').should.be.eql('<div></div>');
+    cssimg('a{background:red;}').should.be.eql('a{background:red;}');
   });
 
   it('upload with images', function(done) {
-    relativeHTMLImg(fs.readFileSync(path.join(__dirname, './fixtures/relative-html-img/a.html'), 'utf-8'), path.join(__dirname, './fixtures/relative-html-img/'), function(e, html) {
-      html.should.be.eql(fs.readFileSync(path.join(__dirname, './fixtures/relative-html-img/a-expected.html'), 'utf-8'));
+    cssimg(fs.readFileSync(path.join(__dirname, './fixtures/cssimg/a.css'), 'utf-8'), path.join(__dirname, './fixtures/cssimg/'), function(e, html) {
+      html.should.be.eql(fs.readFileSync(path.join(__dirname, './fixtures/cssimg/a-expected.css'), 'utf-8'));
       done();
     });
   });
 
   it('upload images with gulp', function(done) {
-    gulp.src('test/fixtures/relative-html-img/a.html')
-      .pipe(relativeHTMLImg.gulp())
+    gulp.src('test/fixtures/cssimg/a.css')
+      .pipe(cssimg.gulp())
       .pipe(es.map(function(file, cb) {
-        String(file.contents).should.be.eql(fs.readFileSync(path.join(__dirname, './fixtures/relative-html-img/a-expected.html'), 'utf-8'));
+        String(file.contents).should.be.eql(fs.readFileSync(path.join(__dirname, './fixtures/cssimg/a-expected.css'), 'utf-8'));
         cb(null, file);
       }))
       .on('end', done);

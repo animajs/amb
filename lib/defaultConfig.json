@@ -1,5 +1,5 @@
 {
-  "build-steps-in-publish": [
+  "build_steps_in_publish": [
     "imgmin",
     "group",
     "inline",
@@ -10,20 +10,29 @@
     "uglify"
   ],
 
-  "img-dir": "./src/img/",
-  "build-dir": "./dist/",
+  "img_src": "./src/img/",
+  "dest": "./dist/",
 
-  "img-upload-engine": {
-    "source": "tps",
+  "img_upload_engine": {
+    "name": "tps",
     "opt": {}
   },
 
-  "jscss-upload-engine": {
-    "source": "alipaycdn",
+  "jscss_upload_engine": {
+    "name": "alipaycdn",
     "opt": {}
   },
+
+  // js build opts
+  "bare": false,
+  "standalone": false,
 
   "builder": {
+
+    // image
+    "imgmin": {
+      "enable": true
+    },
 
     // html
     "htmlgroup": {
@@ -48,7 +57,7 @@
     },
 
     // js
-    "peaches": {
+    "uglify": {
       "enable": true
     }
 
