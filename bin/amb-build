@@ -72,7 +72,7 @@ function buildFiles(files, opt, cb) {
   files.forEach(function build(file) {
     var start = new Date();
     buildFile(file, opt, function() {
-      console.log('build: %s in %s ms', chalk.green(path.basename(file)), new Date() - start);
+      console.log('build: %s in %s ms', chalk.green(opt.dest + path.basename(file)), new Date() - start);
       ep.emit('build');
     });
   });
