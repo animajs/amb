@@ -1,2 +1,2 @@
 
-require("<%= main %>");
+seajs.use("<%= main %>");
