@@ -13,6 +13,7 @@ var chalk = require('chalk');
 var getConfig = require('../lib/config').get;
 var _ = require('lodash');
 var util = require('../lib/util');
+var log = require('../lib/log');
 var spm = require('spm');
 
 program
@@ -21,13 +22,13 @@ program
   .option('-p, --publish', 'build for publish')
   .parse(process.argv);
 
-run();
 if (program.watch) {
-  console.log(chalk.underline('Start watching...'));
-  gulp.watch('src/**/*.+(html|css|js|coffee|less)', function() {
+  log.alert('Start watching...');
+  gulp.watch('src/**/*.+(html|css|less|js|coffee|tpl|handlebars|json|jpg|jpeg|gif|png)', function() {
     run();
   });
 }
+run();
 
 
 //////////////////////
@@ -54,15 +55,19 @@ function run() {
     }
   });
 
-  console.log(chalk.white.bold('Building Project'));
+  log.header('Building Project');
 
   // build: spm install -> img -> css, js -> html
+  log.info('spm', 'installing dependencies');
   spm.install({
     source: opt["spm-source"],
     query: []
   }, function() {
+    log.info('start', 'build img');
     buildImg(opt, function() {
+      log.info('start', 'build css and js');
       buildFiles(cssjsfiles, opt, function() {
+        log.info('start', 'build html');
         buildFiles(htmlfiles, opt);
       });
     });
@@ -78,7 +83,7 @@ function buildFiles(files, opt, cb) {
   files.forEach(function build(file) {
     var start = new Date();
     buildFile(file, opt, function() {
-      console.log('build: %s in %s ms', chalk.green(opt.dest + path.basename(file)), new Date() - start);
+      log.info('done', '%s %s ' + chalk.gray('(%sms)'), chalk.green('✔'), path.basename(file), new Date() - start);
       ep.emit('build');
     });
   });

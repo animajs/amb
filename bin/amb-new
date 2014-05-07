@@ -8,6 +8,7 @@ var gulp = require('gulp');
 var template = require('gulp-template');
 var chalk = require('chalk');
 var tildify = require('tildify');
+var log = require('../lib/log');
 
 program
   .usage('PROJECT_PATH')
@@ -26,11 +27,11 @@ if (projPath[0] != '/') {
 }
 
 if (fs.existsSync(projPath)) {
-  console.error(chalk.red('error:') + ' %s is existed.', chalk.white.bold(tildify(projPath)));
+  log.error('error', ' %s is existed.', chalk.white.bold(tildify(projPath)));
   return;
 }
 
-console.log(chalk.white.bold('Generating new project:'), chalk.green(projName));
+log.header('Generating new project: %s', chalk.green(projName));
 
 gulp.src(tmplDir)
 
@@ -45,7 +46,7 @@ gulp.src(tmplDir)
   // console outputs
   .on('data', function(file) {
     if (!fs.statSync(file.path).isFile()) return;
-    console.log('Creating %s', file.relative);
+    log.info('creating', file.relative);
   })
   .on('end', function() {
     // console.log(chalk.green('Done'));
