@@ -1,2 +1,2 @@
 
-define.use("<%= main %>");
+require("<%= main %>");

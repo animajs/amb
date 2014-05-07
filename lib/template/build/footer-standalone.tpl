@@ -1,8 +1,8 @@
 
 if (typeof exports == "object") {
-  module.exports = define.require("<%= main %>");
+  module.exports = require("<%= main %>");
 } else if (typeof define == "function" && define.amd) {
-  define([], function(){ return define.require("<%= main %>"); });
+  define([], function(){ return require("<%= main %>"); });
 } else {
-  this["<%= standalone %>"] = define.require("<%= main %>");
+  this["<%= standalone %>"] = require("<%= main %>");
 }
