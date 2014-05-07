@@ -6,8 +6,16 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec --require should -t 50000 ./test/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/animajs/amb"
+  },
   "author": "chencheng <sorrycc@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/animajs/amb/issues"
+  },
+  "homepage": "https://github.com/animajs/amb",
   "dependencies": {
     "umi": "0.0.2",
     "commander": "~2.2.0",
@@ -30,13 +38,12 @@
     "async": "~0.8.0",
     "mkdirp": "~0.5.0",
     "tildify": "~0.2.0",
-    "peaches": "~0.5.18",
     "lodash": "~2.4.1",
     "debug": "^0.8.1",
     "gulp-imagemin": "~0.5.0",
     "node-json-minify": "~0.1.3-a",
     "spm": "~3.0.0-rc1",
-    "gulp-peaches": "^0.1.0"
+    "gulp-peaches": "^0.1.1"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
