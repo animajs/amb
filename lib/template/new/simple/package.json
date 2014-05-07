@@ -1,0 +1,15 @@
+{
+  "name": "<%= projName %>",
+  "version": "1.0.0",
+  "spm": {
+    "output": [
+      "index.js",
+      "index.css",
+      "index.html"
+    ],
+    "dependencies": {
+    }
+  },
+  "amb": {
+  }
+}
