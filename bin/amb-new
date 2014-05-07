@@ -12,6 +12,7 @@ var log = require('../lib/log');
 
 program
   .usage('PROJECT_PATH')
+  .option('-t, --template <template>', 'select target template')
   .parse(process.argv);
 
 var projPath = program.args[0];
@@ -20,8 +21,13 @@ if (!projPath) {
   return program.help();
 }
 
+var tmplName = program.template || 'default';
+var tmplDir = path.join(__dirname, '../lib/template/new/' + tmplName);
+if (!fs.existsSync(tmplDir)) {
+  log.error('error', 'template %s is not valid', chalk.white.bold(tmplName));
+  return;
+}
 
-var tmplDir = path.join(__dirname, '../lib/template/new/default/**');
 if (projPath[0] != '/') {
   projPath = path.join(process.cwd(), projPath);
 }
@@ -33,7 +39,7 @@ if (fs.existsSync(projPath)) {
 
 log.header('Generating new project: %s', chalk.green(projName));
 
-gulp.src(tmplDir)
+gulp.src(path.join(tmplDir, '**'))
 
   // template
   .pipe(template({
