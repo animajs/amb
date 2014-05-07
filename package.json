@@ -35,7 +35,8 @@
     "debug": "^0.8.1",
     "gulp-imagemin": "~0.5.0",
     "node-json-minify": "~0.1.3-a",
-    "spm": "~3.0.0-rc1"
+    "spm": "~3.0.0-rc1",
+    "gulp-peaches": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
