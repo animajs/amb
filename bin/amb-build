@@ -60,7 +60,7 @@ function run() {
   // build: spm install -> img -> css, js -> html
   log.info('spm', 'installing dependencies');
   spm.install({
-    source: opt["spm-source"],
+    source: opt['spm_source'],
     query: []
   }, function() {
     log.info('start', 'build img');

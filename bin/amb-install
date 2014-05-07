@@ -20,7 +20,7 @@ program
 
 var opt = getConfig();
 spm.install({
-  source: program.source || opt["spm-source"],
+  source: program.source || opt["spm_source"],
   destination: program.destination,
   force: program.force,
   parallel: program.parallel,

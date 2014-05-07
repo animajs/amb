@@ -5,6 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var program = require('commander');
 var gulp = require('gulp');
+var gi = require('gulp-if');
 var template = require('gulp-template');
 var chalk = require('chalk');
 var tildify = require('tildify');
@@ -42,9 +43,9 @@ log.header('Generating new project: %s', chalk.green(projName));
 gulp.src(path.join(tmplDir, '**'))
 
   // template
-  .pipe(template({
+  .pipe(gi(isTextFile, template({
     projName: projName
-  }))
+  })))
 
   // copy
   .pipe(gulp.dest(projPath))
@@ -57,3 +58,12 @@ gulp.src(path.join(tmplDir, '**'))
   .on('end', function() {
     // console.log(chalk.green('Done'));
   });
+
+
+///////////////////////
+// Helpers.
+
+function isTextFile(file) {
+  return !/.(jpg|png|jpeg|gif)$/.test(file.path);
+}
+
