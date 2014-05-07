@@ -5,7 +5,7 @@ var debug = require('debug')('amb:build');
 var program = require('commander');
 var path = require('path');
 var EventProxy = require('eventproxy');
-var Package = require('father').SpmPackage;
+var Package = require('umi').Package;
 var buildFile = require('../lib/build').buildFile;
 var buildImg = require('../lib/build').buildImg;
 var gulp = require('gulp');
@@ -38,7 +38,9 @@ function run() {
   // build opt
   var opt = getConfig();
   opt.include = 'all';
-  opt.pkg = new Package(process.cwd());
+  opt.pkg = new Package(process.cwd(), {
+    extraDeps: {handlebars: 'handlebars'}
+  });
   if (program.standalone) opt.standalone = program.standalone;
   if (program.publish) opt.publish = program.publish;
 

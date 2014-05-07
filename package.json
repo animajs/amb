@@ -24,7 +24,6 @@
     "gulp": "~3.6.0",
     "gulp-template": "~0.1.1",
     "eventproxy": "~0.3.1",
-    "father": "~0.5.4",
     "gulp-if": "~1.1.0",
     "gulp-cssmin": "~0.1.4",
     "gulp-uglify": "~0.2.1",
