@@ -61,6 +61,11 @@ $ amb build --watch
 $ amb build --publish
 ```
 
+## 详解
+
+* [配置项详解](https://github.com/animajs/amb/wiki/Configuration)
+* [构建详解](https://github.com/animajs/amb/wiki/Build)
+
 ## License
 
 (The MIT License)
