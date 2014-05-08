@@ -1,10 +1,13 @@
 {
   "name": "amb",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Alipay mobile builder.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec --require should -t 50000 ./test/"
+  },
+  "bin": {
+    "amb": "bin/amb"
   },
   "repository": {
     "type": "git",
