@@ -57,7 +57,7 @@ function run() {
     }
   });
 
-  log.header('Building Project');
+  log.header('building');
 
   // build: spm install -> img -> css, js -> html
   log.info('spm', 'installing dependencies');

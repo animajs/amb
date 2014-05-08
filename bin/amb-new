@@ -38,7 +38,7 @@ if (fs.existsSync(projPath)) {
   return;
 }
 
-log.header('Generating new project: %s', chalk.green(projName));
+log.header('new project', projName);
 
 gulp.src(path.join(tmplDir, '**'))
 
