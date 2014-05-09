@@ -19,15 +19,15 @@ var subcmd = program.args[0];
 debug('amb %s', subcmd);
 
 if (!subcmd) {
-  console.log('\n  amb %s -- ', version, 'Amb is project builder based on SPM@3x');
+  console.log();
+  console.log('  amb %s -- ', version, 'Amb is project builder based on SPM@3x');
   program.outputHelp();
-  console.log(
-    '  Subcommands:\n\n' +
-    '    new            Creates a new project scaffold in PATH\n' +
-    '    install        Install dependencies\n' +
-    '    build          Build your project\n' +
-    ''
-  );
+  console.log('  Subcommands:');
+  console.log();
+  console.log('    new            Creates a new project scaffold in PATH');
+  console.log('    install        Install dependencies');
+  console.log('    build          Build your project');
+  console.log();
   return;
 }
 
