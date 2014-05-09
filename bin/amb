@@ -8,21 +8,27 @@ var path = require('path');
 var chalk = require('chalk');
 var amb = require('../');
 var spawn = require('child_process').spawn;
-
-process.on('exit', function() {
-  // console.log();
-});
+var version = require('../package').version;
 
 program
-  .version(require('../package').version, '-v, --version')
+  .version(version, '-v, --version')
+  .usage('subcommand [options]')
   .parse(process.argv);
 
 var subcmd = program.args[0];
 debug('amb %s', subcmd);
 
 if (!subcmd) {
-  console.log('\n  %s (v%s)', chalk.bold.white('Alipay Mobile Builder.'), require('../package').version);
-  return program.help();
+  console.log('\n  amb %s -- ', version, 'Amb is project builder based on SPM@3x');
+  program.outputHelp();
+  console.log(
+    '  Subcommands:\n\n' +
+    '    new            Creates a new project scaffold in PATH\n' +
+    '    install        Install dependencies\n' +
+    '    build          Build your project\n' +
+    ''
+  );
+  return;
 }
 
 var bin = path.join(__dirname, 'amb-' + subcmd);
