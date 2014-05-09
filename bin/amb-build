@@ -22,19 +22,21 @@ program
   .option('-p, --publish', 'build for publish')
   .parse(process.argv);
 
-if (program.watch) {
-  log.alert('Start watching...');
+run(function() {
+  if (!program.watch) return;
+  log.header('auto-build', 'enabled');
   gulp.watch(['./**', '!./{dist,tmp,sea-modules}/**'], function() {
-    run();
+    run(function() {
+      log.info('all done', 'at', new Date());
+    });
   });
-}
-run();
+});
 
 
 //////////////////////
 // Methods.
 
-function run() {
+function run(cb) {
   // build opt
   var opt = getConfig();
   opt.include = 'all';
@@ -57,7 +59,7 @@ function run() {
     }
   });
 
-  log.header('building');
+  log.header('build');
 
   // build: spm install -> img -> css, js -> html
   log.info('spm', 'installing dependencies');
@@ -70,7 +72,7 @@ function run() {
       log.info('start', 'build css and js');
       buildFiles(cssjsfiles, opt, function() {
         log.info('start', 'build html');
-        buildFiles(htmlfiles, opt);
+        buildFiles(htmlfiles, opt, cb);
       });
     });
   })
