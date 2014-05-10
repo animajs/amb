@@ -13,14 +13,14 @@ $ npm install amb -g
 ### 生成新项目
 
 ```bash
-$ amb new [projectName]
+$ amb new <projectName>
 ```
 
-还可以通过加 `--template [templateName]` 来指定模板，目前有两个模板，分别是 `default` 和 `simple`，比如：
+还可以通过加 `--template <templateName>` 来指定模板，目前有两个模板，分别是 `default` 和 `simple`，比如：
 
 ```bash
 # 用 simple 模板生成新项目
-$ amb new [projectName] --template simple
+$ amb new <projectName> --template simple
 ```
 
 ### 安装依赖
