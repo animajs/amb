@@ -25,10 +25,16 @@ program
 run(function() {
   if (!program.watch) return;
   log.header('auto-build', 'enabled');
-  gulp.watch(getConfig().watch, function() {
+  var timer = null;
+  var _run = function() {
     run(function() {
       log.info('all done', 'at', new Date());
     });
+  };
+  gulp.watch(getConfig().watch, function(e) {
+    log.header('watch', e.path);
+    timer && clearTimeout(timer);
+    timer = setTimeout(_run, 500);
   });
 });
 
