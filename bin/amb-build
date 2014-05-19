@@ -32,7 +32,7 @@ buildWrap(function() {
   log.header('watch', 'enabled');
 
   var timer;
-  gulp.watch(opt.watch, function(e) {
+  gulp.watch([opt.watch].concat('./package.json'), function(e) {
     log.header('file changed', e.path);
     timer && clearTimeout(timer);
     timer = setTimeout(buildWrap, 500);
