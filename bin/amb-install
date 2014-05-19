@@ -24,7 +24,7 @@ spm.install({
   destination: program.destination,
   force: program.force,
   parallel: program.parallel,
-  save: program.save,
+  save: !program.saveDev,
   saveDev: program.saveDev,
   query: program.args
 });
