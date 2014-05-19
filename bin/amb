@@ -7,7 +7,7 @@ var fs = require('fs');
 var path = require('path');
 var chalk = require('chalk');
 var amb = require('../');
-var spawn = require('child_process').spawn;
+var spawn = require('win-spawn');
 var version = require('../package').version;
 
 program
