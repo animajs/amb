@@ -25,20 +25,20 @@ $ amb new <projectName> --template simple
 
 ### 安装依赖
 
-是 `spm install` 的镜像，比如：
+是 `spm install` 的镜像，默认会添加 `--save` 参数。比如：
 
 ```bash
 # 安装 package.json 里指定的所有依赖
 $ amb install
 
-# 安装指定 package
+# 安装指定 package，并保存到 dependencies
 $ amb install arale-widget
 
-# 安装指定版本的 package
+# 安装指定版本的 package，并保存到 dependencies
 $ amb install arale-widget@1.1.0
 
-# 安装 package 并保存到 package.json
-$ amb install arale-widget --save
+# 安装 package 并保存到 devDependencies
+$ amb install arale-widget --save-dev
 ```
 
 ### 构建
