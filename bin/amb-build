@@ -6,8 +6,7 @@ var program = require('commander');
 var path = require('path');
 var EventProxy = require('eventproxy');
 var Package = require('umi').Package;
-var buildFile = require('../lib/build').buildFile;
-var buildImg = require('../lib/build').buildImg;
+var build = require('../lib/build');
 var gulp = require('gulp');
 var chalk = require('chalk');
 var getConfig = require('../lib/config').get;
@@ -15,6 +14,13 @@ var _ = require('lodash');
 var util = require('../lib/util');
 var log = require('../lib/log');
 var spm = require('spm');
+var file = spm.sdk.file;
+
+var p = file.readJSON('package.json');
+if (!p || !p.spm) {
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(1);
+}
 
 program
   .option('-w, --watch', 'watch for file changes and rebuild automatically')
@@ -22,20 +28,25 @@ program
   .option('-p, --publish', 'build for publish')
   .parse(process.argv);
 
-run(function() {
-  if (!program.watch) return;
-  log.header('auto-build', 'enabled');
-  var timer = null;
-  var _run = function() {
-    run(function() {
-      log.info('all done', 'at', new Date());
-    });
-  };
-  gulp.watch(getConfig().watch, function(e) {
-    log.header('watch', e.path);
-    timer && clearTimeout(timer);
-    timer = setTimeout(_run, 500);
-  });
+var opt = _.extend(getConfig(), {
+  standalone: program.standalone,
+  publish: program.publish,
+  include: 'all'
+});
+
+var begin = new Date();
+
+gulp.task('prepare', function() {
+  begin = new Date();
+});
+
+build(opt, function(err) {
+  if (err) {
+    log.error('error', err.message);
+    log.debug('error', err.stack);
+  } else {
+    log.info('finish', showDiff(begin));
+  }
 });
 
 
@@ -43,15 +54,6 @@ run(function() {
 // Methods.
 
 function run(cb) {
-  // build opt
-  var opt = getConfig();
-  opt.include = 'all';
-  opt.pkg = new Package(process.cwd(), {
-    extraDeps: {handlebars: 'handlebars'}
-  });
-  if (program.standalone) opt.standalone = program.standalone;
-  if (program.publish) opt.publish = program.publish;
-
   // filter html and jscss
   var files = require(path.join(process.cwd(), './package')).spm.output;
   var cssjsfiles = [];
@@ -84,17 +86,7 @@ function run(cb) {
   })
 }
 
-function buildFiles(files, opt, cb) {
-  var ep = new EventProxy();
-  ep.after('build', files.length, function() {
-    cb && cb(null);
-  });
-
-  files.forEach(function build(file) {
-    var start = new Date();
-    buildFile(file, opt, function() {
-      log.info('done', '%s %s ' + chalk.gray('(%sms)'), chalk.green('✔'), path.basename(file), new Date() - start);
-      ep.emit('build');
-    });
-  });
+function showDiff(time) {
+  var diff = Date.now() - time;
+  return (' (' + diff + 'ms)').to.gray.color;
 }
