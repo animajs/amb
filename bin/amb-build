@@ -27,20 +27,37 @@ var opt = _.extend(getConfig(), {
   include: 'all'
 });
 
-var begin = new Date();
+buildWrap(function() {
+  if (!opt.watch) return;
+  log.header('watch', 'enabled');
 
-gulp.task('prepare', function() {
-  begin = new Date();
+  var timer;
+  gulp.watch(opt.watch, function(e) {
+    log.header('file changed', e.path);
+    timer && clearTimeout(timer);
+    timer = setTimeout(buildWrap, 500);
+  });
 });
 
-build(opt, function(err) {
-  if (err) {
-    log.error('error', err.message);
-    log.debug('error', err.stack);
-  } else {
-    log.info('finish', showDiff(begin));
-  }
-});
+function buildWrap(cb) {
+  var begin = new Date();
+  var _gulp = new gulp.Gulp();
+
+  _gulp.task('prepare', function() {
+    begin = new Date();
+  });
+
+  build(opt, _gulp, function(err) {
+    if (err) {
+      log.error('error', err.message);
+      log.debug('error', err.stack);
+    } else {
+      log.info('finish', showDiff(begin));
+    }
+  });
+
+  cb && cb();
+}
 
 function showDiff(time) {
   var diff = Date.now() - time;
