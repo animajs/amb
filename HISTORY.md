@@ -2,6 +2,10 @@
 
 ---
 
+## 1.2.0 (未发布)
+
+* `improved` 添加 livereload 支持
+
 ## 1.1.0
 
 * `improved` [基于 gulp task 的 build](https://github.com/animajs/amb/pull/3)
