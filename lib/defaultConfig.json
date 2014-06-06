@@ -25,7 +25,8 @@
     "opt": {}
   },
 
-  // "watch": ["./**", "!./{dist,tmp,sea-modules}/**"],
+  "watch": ["./**", "!./{dist,tmp,sea-modules}/**"],
+  "livereload": false,
 
   // js build opts
   "standalone": false,

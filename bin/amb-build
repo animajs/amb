@@ -29,22 +29,26 @@ var opt = _.extend(getConfig(), {
 });
 
 buildWrap(function() {
-  if (!opt.watch) return;
+  if (!program.watch) return;
   log.header('watch', 'enabled');
 
-  var timer;
-  gulp.watch([opt.watch].concat('./package.json'), function(file) {
-    log.header('file changed', file.path);
-    timer && clearTimeout(timer);
-    timer = setTimeout(buildWrap, 500);
-  });
+  setTimeout(function() {
+    var timer;
+    gulp.watch([opt.watch].concat('./package.json'), function(file) {
+      log.header('file changed', file.path);
+      timer && clearTimeout(timer);
+      timer = setTimeout(buildWrap, 500);
+    });
+  }, 100);
 
   // livereload
-  var server = livereload();
-  gulp.watch(opt.dest + '**', function(file) {
-    log.info('livereload', file.path);
-    server.changed(file.path);
-  });
+  if (opt.livereload) {
+    var server = livereload();
+    gulp.watch(opt.dest + '**', function(file) {
+      log.info('livereload', file.path);
+      server.changed(file.path);
+    });
+  }
 });
 
 function buildWrap(cb) {
