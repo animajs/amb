@@ -14,6 +14,7 @@
 
   "img_src": "./src/img/",
   "dest": "./dist/",
+  "flatten": true,
 
   "img_upload_engine": {
     "name": "tps",
@@ -29,7 +30,6 @@
   "livereload": false,
 
   // js build opts
-  "standalone": false,
   "bare": false,
   "seajs-debug": false,
 
