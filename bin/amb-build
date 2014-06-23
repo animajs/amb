@@ -24,9 +24,9 @@ program
 
 var opt = _.extend(getConfig(), {
   standalone: program.standalone,
-  publish: program.publish,
-  include: 'all'
+  publish: program.publish
 });
+if (!opt.include) opt.include = 'standalone';
 
 buildWrap(function() {
   if (!program.watch) return;
