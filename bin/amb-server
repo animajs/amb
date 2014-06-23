@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var http = require('http');
+var log = require('../lib/log');
+var getConfig = require('../lib/config').get;
+var serveSPM = require('serve-spm');
+var express = require('express');
+
+program
+  .option('-p, --port [port]', 'server port')
+  .parse(process.argv);
+
+var config = getConfig();
+var app = express();
+var port = program.port || 8000;
+
+app.use(serveSPM(process.cwd(), {
+  dist: config.dist
+}));
+
+app.listen(port);
+log.info('server', 'listened on ' + port);
+
