@@ -8,7 +8,8 @@
       "index.html"
     ],
     "dependencies": {
-    }
+    },
+    "buildArgs": "--include standalone"
   },
   "amb": {
     "img_src": "./img/"

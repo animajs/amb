@@ -8,7 +8,8 @@
       "src/html/index.html"
     ],
     "dependencies": {
-    }
+    },
+    "buildArgs": "--include standalone"
   },
   "amb": {
   }
