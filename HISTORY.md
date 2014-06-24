@@ -2,6 +2,15 @@
 
 ---
 
+## 1.2
+
+* `new` amb server
+* `new` 新增 flatten 配置项，可以配置是否拍平目录
+* `improved` 可以配置 build 模式，支持 spm 的各种 build 方式
+* `improved` html 和 css 的处理全部抽成 gulp 插件
+* `improved` standalone 的 build 切换为 umi.standalonify
+* `deleted` 删除图片压缩处理
+
 ## 1.1.1
 
 * `improved` 添加 livereload 支持
