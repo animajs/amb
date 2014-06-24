@@ -4,7 +4,6 @@
 var program = require('commander');
 var build = require('../lib/build');
 var gulp = require('gulp');
-var livereload = require('gulp-livereload');
 var getConfig = require('../lib/config').get;
 var _ = require('lodash');
 var log = require('../lib/log');
@@ -37,15 +36,6 @@ buildWrap(function() {
       timer = setTimeout(buildWrap, 500);
     });
   }, 100);
-
-  // livereload
-  if (opt.livereload) {
-    var server = livereload();
-    gulp.watch(opt.dest + '**', function(file) {
-      log.info('livereload', file.path);
-      server.changed(file.path);
-    });
-  }
 });
 
 function buildWrap(cb) {

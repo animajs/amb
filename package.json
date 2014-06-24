@@ -36,7 +36,6 @@
     "gulp-htmlinline": "^0.1.0",
     "gulp-if": "~1.2.0",
     "gulp-less": "~1.2.3",
-    "gulp-livereload": "^1.5.0",
     "gulp-peaches": "^0.1.1",
     "gulp-template": "~0.1.1",
     "gulp-uglify": "~0.3.0",
