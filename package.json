@@ -21,7 +21,6 @@
   "homepage": "https://github.com/animajs/amb",
   "dependencies": {
     "async": "~0.9.0",
-    "cdn": "~0.2.8",
     "chalk": "~0.4.0",
     "cheerio": "~0.16.0",
     "commander": "~2.2.0",
@@ -31,8 +30,12 @@
     "express": "^4.4.4",
     "gulp": "~3.6.0",
     "gulp-coffee": "~1.4.2",
+    "gulp-cssimg": "^0.1.0",
     "gulp-cssmin": "~0.1.4",
     "gulp-flatten": "0.0.2",
+    "gulp-htmlgroup": "^0.1.0",
+    "gulp-htmlimg": "^0.1.0",
+    "gulp-htmlinline": "^0.1.0",
     "gulp-if": "~1.2.0",
     "gulp-less": "~1.2.3",
     "gulp-livereload": "^1.5.0",
@@ -48,6 +51,7 @@
     "spm": "^3.0.2",
     "tildify": "~0.2.0",
     "umi": "^0.3.0",
+    "upload-to-cdn": "^0.1.0",
     "win-spawn": "~2.0.0"
   },
   "devDependencies": {

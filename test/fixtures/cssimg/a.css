@@ -1,6 +1,0 @@
-a {
-  background: url(../relative-html-img/dog.jpg);
-  background: url("../relative-html-img/dog.jpg");
-  background: url('../relative-html-img/dog.jpg');
-  color: red;
-}
