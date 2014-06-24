@@ -27,6 +27,7 @@
     "debug": "^0.8.1",
     "express": "^4.4.4",
     "gulp": "~3.6.0",
+    "gulp-clean": "^0.3.0",
     "gulp-cssimg": "^0.1.0",
     "gulp-cssmin": "~0.1.4",
     "gulp-flatten": "0.0.2",
