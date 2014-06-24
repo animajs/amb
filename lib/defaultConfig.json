@@ -3,8 +3,6 @@
     "imgmin",
     "group",
     "inline",
-    "htmlimg",
-    "cssimg",
     "peaches",
     "cssmin",
     "uglify"
