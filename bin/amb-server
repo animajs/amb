@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var http = require('http');
+var mime = require('mime');
 var log = require('../lib/log');
 var getConfig = require('../lib/config').get;
 var serveSPM = require('serve-spm');
 var express = require('express');
+var path = require('path');
+var join = path.join;
+var exists = require('fs').existsSync;
+var read = require('fs').readFileSync;
 
 program
   .option('-p, --port [port]', 'server port')
@@ -15,8 +19,23 @@ var config = getConfig();
 var app = express();
 var port = program.port || 8000;
 
+app.use(function(req, res, next) {
+  var dist = config.dest.replace(/^\./, '');
+  if (req.url.indexOf(dist) !== 0) {
+    return next();
+  }
+  var filepath = join(process.cwd(), req.url);
+  if (!exists(filepath)) {
+    return next();
+  }
+
+  res.setHeader('Content-Type', mime.lookup(path.extname(req.url)));
+  res.writeHead(200);
+  res.end(read(filepath));
+});
+
 app.use(serveSPM(process.cwd(), {
-  dist: config.dist
+//  dist: config.dist
 }));
 
 app.listen(port);
