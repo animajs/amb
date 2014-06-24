@@ -10,6 +10,7 @@ var path = require('path');
 var join = path.join;
 var exists = require('fs').existsSync;
 var read = require('fs').readFileSync;
+var lstat = require('fs').lstatSync;
 
 program
   .option('-p, --port [port]', 'server port')
@@ -25,7 +26,7 @@ app.use(function(req, res, next) {
     return next();
   }
   var filepath = join(process.cwd(), req.url);
-  if (!exists(filepath)) {
+  if (!exists(filepath) || lstat(filepath).isDirectory()) {
     return next();
   }
 
