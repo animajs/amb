@@ -1,6 +1,6 @@
 {
   "name": "amb",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Alipay mobile builder.",
   "main": "index.js",
   "scripts": {
