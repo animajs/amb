@@ -18,10 +18,12 @@ if (!p || !p.spm) {
 program
   .option('-w, --watch', 'watch for file changes and rebuild automatically')
   .option('-p, --publish', 'build for publish')
+  .option('-f, --force', 'clean dist directory before build')
   .parse(process.argv);
 
 var opt = _.extend(getConfig(), {
-  publish: program.publish
+  publish: program.publish,
+  force: program.force
 });
 
 buildWrap(function() {
