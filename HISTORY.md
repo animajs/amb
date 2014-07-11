@@ -2,6 +2,15 @@
 
 ---
 
+## 1.2.2
+
+* `bugfix` 修复 clean bug，没有正确处理依赖
+* `improved` 添加 --force 参数，和 spm 保持一致，只在 --force 的情况下才 clean
+
+## 1.2.1
+
+* `new` build 之前先 clean
+
 ## 1.2.0
 
 * `new` amb server
