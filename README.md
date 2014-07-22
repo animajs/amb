@@ -5,7 +5,8 @@ amb 是基于 [spm@3x](https://github.com/spmjs/spm/tree/master) 的**项目**�
 ## 安装
 
 ```bash
-$ npm install amb -g
+$ npm install tnpm -g --registry=http://registry.npm.alibaba-inc.com
+$ tpm install @alipay/amb -g
 ```
 
 ## 使用
