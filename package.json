@@ -1,5 +1,5 @@
 {
-  "name": "amb",
+  "name": "@alipay/amb",
   "version": "1.2.2",
   "description": "Alipay mobile builder.",
   "main": "index.js",
@@ -49,7 +49,7 @@
     "spm": "^3.0.2",
     "tildify": "~0.2.0",
     "umi": "^0.4.0",
-    "upload-to-cdn": "^0.1.0",
+    "@alipay/upload-to-cdn": "^0.2.0",
     "win-spawn": "~2.0.0"
   },
   "devDependencies": {
