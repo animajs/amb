@@ -1,3 +1,38 @@
 #!/usr/bin/env node
 
-require('spm-server')({});
+var extend = require('extend');
+var program = require('commander');
+var WEINRE_PORT = 8989;
+
+program
+  .option('-p, --port <port>', 'server port, default: 8000')
+  .option('-b, --base <path>', 'base path to access package in production')
+  .option('--idleading <idleading>', 'prefix of module name, default: {{name}}/{{version}}')
+  .option('--https', 'enable https proxy')
+  .option('--livereload', 'enable livereload')
+  .option('--weinre', 'enable weinre')
+  .option('--no-open', 'disable open in default browser')
+  .parse(process.argv);
+
+if (program.weinre) {
+  require('coffee-script');
+  require('weinre').run({
+    httpPort: WEINRE_PORT,
+    boundHost: 'localhost',
+    verbose: false,
+    debug: false,
+    readTimeout: 5,
+    open: false,
+    weinre: true,
+    deathTimeout: 15
+  });
+}
+
+require('spm-server')(extend(program, {
+  noArgvParse: true,
+  middleware: {
+    before: require('../lib/utils/inject_weinre')({
+      port: WEINRE_PORT
+    })
+  }
+}));
