@@ -32,8 +32,8 @@
     "win-spawn": "~2.0.0"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
-    "should": "~3.3.1",
-    "sinon": "~1.9.1"
+    "mocha": "*",
+    "should": "*",
+    "istanbul": "*"
   }
 }
