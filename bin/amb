@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-'use strict';
 
+require('colorful').colorful();
 var debug = require('debug')('amb');
 var program = require('commander');
 var fs = require('fs');
 var path = require('path');
-var chalk = require('chalk');
-var amb = require('../');
 var spawn = require('win-spawn');
 var version = require('../package').version;
 
@@ -20,22 +18,24 @@ debug('amb %s', subcmd);
 
 if (!subcmd) {
   console.log();
-  console.log('  amb %s -- ', version, 'Amb is project builder based on SPM@3x');
+  console.log('  AMB -- %s', 'A project tool based on spm.'.to.bold.color);
   program.outputHelp();
   console.log('  Subcommands:');
   console.log();
-  console.log('    new            Creates a new project scaffold in PATH');
-  console.log('    install        Install dependencies');
-  console.log('    build          Build your project');
+  console.log('    init           initialize a project with scaffold');
+  console.log('    install        install dependencies');
+  console.log('    info           information of a package');
+  console.log('    search         search packages');
+  console.log('    build          build your project');
+  console.log('    server         use local server for debug');
   console.log();
   return;
 }
 
 var bin = path.join(__dirname, 'amb-' + subcmd);
 if (fs.existsSync(bin)) {
-  // return require('./' + bin);
   var args = process.argv.slice(3);
-  spawn(bin, args, {stdio: 'inherit'});
+  spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+} else {
+  debug('subcmd is not valid: $ amb %s', subcmd);
 }
-
-debug('subcmd is not valid: $ amb %s', subcmd);
