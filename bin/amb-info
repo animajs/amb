@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+require('colorful').colorful();
+var commander = require('commander');
+var log = require('spm-log');
+var info = require('../lib/client').info;
+var iduri = require('../lib/utils/iduri');
+var print = require('../lib/utils/print');
+
+commander
+  .usage('[options] name[@version]')
+  .option('--registry <url>', 'registry url of yuan server')
+  .option('-q, --quiet', 'show less log')
+  .option('--verbose', 'show more log')
+  .option('--no-color', 'disable colorful print');
+
+commander.on('--help', function() {
+  console.log();
+  console.log('  ' + 'Examples:'.to.bold.blue);
+  console.log();
+  console.log('   $', 'spm info'.to.magenta.color, 'jquery');
+  console.log('   $', 'spm info'.to.magenta.color, 'arale-class');
+  console.log('   $', 'spm info'.to.magenta.color, 'arale-class@stable');
+  console.log('   $', 'spm info'.to.magenta.color, 'arale-class@1.0.0');
+  console.log();
+});
+
+commander.parse(process.argv);
+
+if (!commander.args[0]) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help');
+  process.exit();
+}
+
+console.log();
+log.config(commander);
+
+var pkg = iduri.resolve(commander.args[0]);
+if (!pkg) {
+  log.error('error', 'invalid module name');
+  process.exit(2);
+}
+
+info(pkg, {
+  registry: commander.registry
+}, function(err, body) {
+  if (err) {
+    log.error('exit', err.message);
+    process.exit(2);
+  }
+  print(body, commander);
+});

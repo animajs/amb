@@ -20,12 +20,15 @@
   },
   "homepage": "http://gitlab.alibaba-inc.com/animajs/amb",
   "dependencies": {
+    "co": "~3.1.0",
     "colorful": "~2.1.0",
     "commander": "~2.3.0",
     "debug": "~1.0.4",
+    "semver": "~3.0.1",
     "serve-spm": "~0.5.1",
     "spm-client": "~0.2.4",
     "spm-log": "~0.1.1",
+    "spmrc": "~1.2.0",
     "win-spawn": "~2.0.0"
   },
   "devDependencies": {
