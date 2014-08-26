@@ -8,7 +8,7 @@
 
 ## 安装
 
-注意：`必须`用 tnpm 来安装 amb
+注意：`必须`用 tnpm 安装
 
 ```bash
 $ npm install tnpm -g --registry=http://registry.npm.alibaba-inc.com
@@ -17,7 +17,7 @@ $ tpm install @alipay/amb -g
 
 ## 使用
 
-### 生成新项目
+### 初始化
 
 ```bash
 $ mkdir foo && cd foo
