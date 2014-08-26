@@ -12,7 +12,7 @@
 
 ```bash
 $ npm install tnpm -g --registry=http://registry.npm.alibaba-inc.com
-$ tpm install @alipay/amb -g
+$ tnpm install @alipay/amb -g
 ```
 
 ## 使用
