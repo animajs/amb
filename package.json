@@ -20,6 +20,13 @@
   },
   "homepage": "http://gitlab.alibaba-inc.com/animajs/amb",
   "dependencies": {
+    "chalk": "~0.5.1",
+    "commander": "~2.3.0",
+    "debug": "~1.0.4",
+    "serve-spm": "~0.5.1",
+    "spm-client": "~0.2.4",
+    "spm-log": "~0.1.1",
+    "win-spawn": "~2.0.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

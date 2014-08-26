@@ -2,7 +2,7 @@
 
 [![build status](http://gitlab-ci.alibaba-inc.com/projects/140/status.png?ref=master)](http://gitlab-ci.alibaba-inc.com/projects/140?ref=master)
 
-基于 [spm](http://spmjs.io/) 的**项目**开发工具.
+基于 [spm](http://spmjs.io/) 的**项目**开发工具，**amb v1.x 请访问 http://gitlab.alibaba-inc.com/animajs/amb/tree/1.x **。
 
 ---
 
