@@ -28,6 +28,7 @@
     "serve-spm": "~0.5.1",
     "spm-client": "~0.2.4",
     "spm-log": "~0.1.1",
+    "spm-server": "~0.2.1",
     "spmrc": "~1.2.0",
     "win-spawn": "~2.0.0"
   },
