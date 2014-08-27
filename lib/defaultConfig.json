@@ -8,5 +8,8 @@
     }
   },
   "cssminOpts": {
+  },
+  "coffeeOpts": {
+    "bare": true
   }
 }
