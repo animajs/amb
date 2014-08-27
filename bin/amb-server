@@ -14,7 +14,12 @@ program
   .option('--no-open', 'disable open in default browser')
   .parse(process.argv);
 
+var args = extend(program, {
+  noArgvParse: true
+});
+
 if (program.weinre) {
+  // start weinre server
   require('coffee-script');
   require('weinre').run({
     httpPort: WEINRE_PORT,
@@ -26,13 +31,12 @@ if (program.weinre) {
     weinre: true,
     deathTimeout: 15
   });
-}
 
-require('spm-server')(extend(program, {
-  noArgvParse: true,
-  middleware: {
-    before: require('../lib/utils/inject_weinre')({
+  args.middleware = {
+    before: require('../lib/utils/inject_weinre')(process.cwd(), {
       port: WEINRE_PORT
     })
-  }
-}));
+  };
+}
+
+require('spm-server')(args);
