@@ -15,8 +15,11 @@
 
   // CSS 压缩配置项
   // 详见：https://github.com/GoalSmashers/clean-css
-  "cssminOpts": {
-  },
+  "cssminOpts": null,
+
+  // less 编译配置项
+  // 详见：https://github.com/plus3network/gulp-less
+  "lessOpts": null,
 
   // coffee 预编译配置项
   // 详见：https://github.com/wearefractal/gulp-coffee
