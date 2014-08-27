@@ -1,69 +1,10 @@
 {
-  "build_steps_in_publish": [
-    "imgmin",
-    "group",
-    "inline",
-    "peaches",
-    "cssmin",
-    "uglify"
-  ],
-
   "spm_source": "http://spmjs.io/",
 
   "img_src": "./src/img/",
   "dest": "./dist/",
   "flatten": true,
 
-  "img_upload_engine": {
-    "name": "tps",
-    "opt": {}
-  },
-
-  "jscss_upload_engine": {
-    "name": "alipaycdn",
-    "opt": {}
-  },
-
-  "watch": ["./**", "!./{dist,tmp,sea-modules}/**"],
-  "livereload": false,
-
-  // js build opts
-  "bare": false,
-  "seajs-debug": false,
-
   "builder": {
-
-    // image
-    "imgmin": {
-      "enable": true
-    },
-
-    // html
-    "htmlgroup": {
-      "enable": true
-    },
-    "htmlinline": {
-      "enable": true
-    },
-    "htmlimg": {
-      "enable": true
-    },
-
-    // css
-    "cssimg": {
-      "enable": true
-    },
-    "cssmin": {
-      "enable": true
-    },
-    "peaches": {
-      "enable": false
-    },
-
-    // js
-    "uglify": {
-      "enable": true
-    }
-
   }
 }

@@ -1,66 +1,58 @@
 #!/usr/bin/env node
 'use strict';
 
+require('colorful').colorful();
+var debug = require('debug')('amb:build');
+var join = require('path').join;
 var program = require('commander');
+var extend = require('extend');
+var log = require('spm-log');
+var config = require('../lib/config');
 var build = require('../lib/build');
-var gulp = require('gulp');
-var getConfig = require('../lib/config').get;
-var _ = require('lodash');
-var log = require('../lib/log');
-var file = require('spm').sdk.file;
+var install = require('../lib/client').install;
 
-var p = file.readJSON('package.json');
+program
+  .option('-f, --force', 'clean dist directory before build')
+  .parse(process.argv);
+
+console.log();
+var p = require(join(process.cwd(), 'package.json'));
 if (!p || !p.spm) {
   log.error('miss', 'package.json or "spm" key');
   process.exit(1);
 }
 
-program
-  .option('-w, --watch', 'watch for file changes and rebuild automatically')
-  .option('-p, --publish', 'build for publish')
-  .option('-f, --force', 'clean dist directory before build')
-  .parse(process.argv);
+var info = ('build ' + p.name + '@' + p.version).to.magenta.color;
+var begin = Date.now();
+log.info('start', info);
 
-var opt = _.extend(getConfig(), {
-  publish: program.publish,
+var args = extend(config.get(), {
+  cwd: process.cwd(),
   force: program.force
 });
 
-buildWrap(function() {
-  if (!program.watch) return;
-  log.header('watch', 'enabled');
+debug('args', args);
 
-  setTimeout(function() {
-    var timer;
-    gulp.watch([opt.watch].concat('./package.json'), function(file) {
-      log.header('file changed', file.path);
-      timer && clearTimeout(timer);
-      timer = setTimeout(buildWrap, 500);
-    });
-  }, 100);
-});
+// install and build
+install(args, function(err) {
+  if (err) {
+    log.error('error', err.message);
+    log.debug('error', err.stack);
+    process.exit(1);
+  }
 
-function buildWrap(cb) {
-  var begin = new Date();
-  var _gulp = new gulp.Gulp();
-
-  _gulp.task('prepare', function() {
-    begin = new Date();
-  });
-
-  build(opt, _gulp, function(err) {
+  build(args, function(err) {
     if (err) {
       log.error('error', err.message);
       log.debug('error', err.stack);
-    } else {
-      log.info('finish', showDiff(begin));
+      process.exit(1);
     }
+    log.info('finish', info + showDiff(begin));
   });
-
-  cb && cb();
-}
+});
 
 function showDiff(time) {
   var diff = Date.now() - time;
   return (' (' + diff + 'ms)').to.gray.color;
 }
+
