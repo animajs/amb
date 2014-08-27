@@ -1,10 +1,12 @@
 {
-  "spm_source": "http://spmjs.io/",
-
-  "img_src": "./src/img/",
+  "registry": "http://spm.alipay-inc.com",
   "dest": "./dist/",
-  "flatten": true,
 
-  "builder": {
+  "uglifyOpts": {
+    "output": {
+      "ascii_only": true
+    }
+  },
+  "cssminOpts": {
   }
 }
