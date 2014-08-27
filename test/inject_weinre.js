@@ -3,10 +3,13 @@ var request = require('request');
 var http = require('http');
 var join = require('path').join;
 var injectWeinre = require('../lib/utils/inject_weinre');
+var getIPAddress = require('ip').address;
 
 var port = 12345;
 var server;
 var root = join(__dirname, 'fixtures/inject_weinre');
+
+var ip = getIPAddress();
 
 describe('inject weinre', function() {
 
@@ -19,23 +22,27 @@ describe('inject weinre', function() {
       server && server.close();
     });
 
+    it('ip', function() {
+      ip.should.not.be.equal('127.0.0.1');
+    });
+
     it('dir with index.htm', function(done) {
       local('', function(err, res, body) {
-        body.should.be.equal('<html></html><script src="http://localhost:8989/target/target-script-min.js#anonymous"></script>');
+        body.should.be.equal('<html></html><script src="http://'+ip+':8989/target/target-script-min.js#anonymous"></script>');
         done();
       });
     });
 
     it('dir with index.html', function(done) {
       local('html/', function(err, res, body) {
-        body.should.be.equal('<html></html><script src="http://localhost:8989/target/target-script-min.js#anonymous"></script>');
+        body.should.be.equal('<html></html><script src="http://'+ip+':8989/target/target-script-min.js#anonymous"></script>');
         done();
       });
     });
 
     it('index.htm', function(done) {
       local('index.htm', function(err, res, body) {
-        body.should.be.equal('<html></html><script src="http://localhost:8989/target/target-script-min.js#anonymous"></script>');
+        body.should.be.equal('<html></html><script src="http://'+ip+':8989/target/target-script-min.js#anonymous"></script>');
         done();
       });
     });
@@ -67,7 +74,7 @@ describe('inject weinre', function() {
 
     it('normal', function(done) {
       local('', function(err, res, body) {
-        body.should.be.equal('<html></html><script src="http://localhost:8989/target/target-script-min.js#anonymous"></script>');
+        body.should.be.equal('<html></html><script src="http://'+ip+':8989/target/target-script-min.js#anonymous"></script>');
         done();
       });
     });
