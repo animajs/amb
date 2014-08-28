@@ -6,6 +6,7 @@
   "dest": "./dist/",
 
   // Rename files
+  // 详见：https://github.com/jeremyruppel/pathmap
   "pathmap": null,
 
   // JS 压缩配置项
