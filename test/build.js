@@ -81,6 +81,17 @@ describe('build', function() {
     });
   });
 
+  it('ambfile', function(done) {
+    var opt = {
+      cwd: join(base, 'ambfile'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      assets('ambfile', dest);
+      done();
+    });
+  });
+
   it('should clean directory', function(done) {
     var fakeFile = join(dest, 'a.js');
     fs.mkdirSync(dest);

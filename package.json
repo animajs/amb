@@ -48,6 +48,7 @@
     "spm-server": "~0.2.1",
     "spm-standalonify": "~0.1.0",
     "spmrc": "~1.2.0",
+    "through2": "~0.6.1",
     "umi": "~0.6.0",
     "weinre": "~2.0.0-pre-HZ79PDUK",
     "win-spawn": "~2.0.0"

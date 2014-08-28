@@ -12,4 +12,15 @@ describe('config', function() {
     // default
     args.dest.should.be.equal('./dist/');
   });
+
+  it('dont pass cwd', function() {
+    var cwd = join(__dirname, 'fixtures/config');
+    process.chdir(cwd);
+    var args = config.get();
+
+    // custom
+    args.registry.should.be.equal('1');
+    // default
+    args.dest.should.be.equal('./dist/');
+  });
 });
