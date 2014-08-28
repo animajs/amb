@@ -110,6 +110,17 @@ describe('build', function() {
     });
   });
 
+  it('copy image', function(done) {
+    var opt = {
+      cwd: join(base, 'copy-img'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      fs.existsSync(join(dest, 'a/0.1.0/a.gif')).should.be.true;
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     var expectFiles = glob.sync('**/*', {cwd: expect});
