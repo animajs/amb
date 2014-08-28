@@ -48,6 +48,7 @@ inquirer.prompt([{
 
       // spm install
       console.log();
+      console.log(config.get().registry);
       install({
         registry: config.get().registry,
         cwd: cwd

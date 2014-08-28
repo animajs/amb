@@ -1,6 +1,6 @@
 {
   // spm 源
-  "registry": "http://spmjs.io",
+  "registry": "http://spm.alipay-inc.com",
 
   // 构建输出目录
   "dest": "./dist/",
