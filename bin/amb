@@ -4,9 +4,10 @@ require('colorful').colorful();
 var debug = require('debug')('amb');
 var program = require('commander');
 var fs = require('fs');
-var path = require('path');
+var join = require('path').join;
 var spawn = require('win-spawn');
 var version = require('../package').version;
+var request = require('request');
 
 program
   .version(version, '-v, --version')
@@ -32,10 +33,30 @@ if (!subcmd) {
   return;
 }
 
-var bin = path.join(__dirname, 'amb-' + subcmd);
-if (fs.existsSync(bin)) {
-  var args = process.argv.slice(3);
-  spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
-} else {
-  debug('subcmd is not valid: $ amb %s', subcmd);
+request('http://registry.npm.alibaba-inc.com/@alipay/amb/latest', function(err, res, body) {
+  if (err) {
+    return exec();
+  }
+
+  var data = JSON.parse(body);
+  var pkg = require(join(__dirname, '../package.json'));
+  if (data.version && pkg.version !== data.version) {
+    console.warn('%s @alipay/amb 推荐版本是 %s, 本地版本是 %s.' +
+        '\n%s 你可以执行 %s 来安装此版本\n%s 如果提示没有权限，请尝试 %s',
+      '[WARNING]'.to.yellow.color, data.version.to.green.color, pkg.version.to.yellow.color,
+      '[WARNING]'.to.yellow.color, ('tnpm install -g @alipay/amb@' + data.version).to.green.color,
+      '[WARNING]'.to.yellow.color, ('sudo tnpm install -g @alipay/amb@' + data.version).to.green.color);
+  }
+
+  exec();
+});
+
+function exec() {
+  var bin = join(__dirname, 'amb-' + subcmd);
+  if (fs.existsSync(bin)) {
+    var args = process.argv.slice(3);
+    spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+  } else {
+    debug('subcmd is not valid: $ amb %s', subcmd);
+  }
 }
