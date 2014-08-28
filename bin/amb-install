@@ -4,6 +4,7 @@ require('colorful').colorful();
 var commander = require('commander');
 var install = require('../lib/client').install;
 var log = require('spm-log');
+var config = require('../lib/config');
 
 commander
   .usage('[options] name[@version]')
@@ -35,7 +36,7 @@ console.log();
 log.config(commander);
 
 install({
-  registry: commander.registry,
+  registry: commander.registry || config.get().registry,
   cwd: commander.inputDirectory,
   destination: commander.outputDirectory,
   force: commander.force,
