@@ -12,7 +12,10 @@ var build = require('../lib/build');
 var install = require('../lib/client').install;
 
 program
+  .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
+  .option('--ignore <ignore>', 'determine which id will not be transported')
   .option('-f, --force', 'clean dist directory before build')
+  .option('--no-install', 'disable install')
   .parse(process.argv);
 
 console.log();
@@ -28,19 +31,29 @@ log.info('start', info);
 
 var args = extend(config.get(), {
   cwd: process.cwd(),
-  force: program.force
+  force: program.force,
+  install: program.install,
+  include: program.include,
+  ignore: program.ignore
 });
 
 debug('args', args);
 
 // install and build
-install(args, function(err) {
-  if (err) {
-    log.error('error', err.message);
-    log.debug('error', err.stack);
-    process.exit(1);
-  }
+if (args.install) {
+  install(args, function(err) {
+    if (err) {
+      log.error('error', err.message);
+      log.debug('error', err.stack);
+      process.exit(1);
+    }
+    runBuild();
+  });
+} else {
+  runBuild();
+}
 
+function runBuild() {
   build(args, function(err) {
     if (err) {
       log.error('error', err.message);
@@ -49,7 +62,7 @@ install(args, function(err) {
     }
     log.info('finish', info + showDiff(begin));
   });
-});
+}
 
 function showDiff(time) {
   var diff = Date.now() - time;
