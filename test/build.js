@@ -104,6 +104,18 @@ describe('build', function() {
     });
   });
 
+  it('pathmap with template', function(done) {
+    var opt = {
+      cwd: join(base, 'normal'),
+      dest: dest,
+      pathmap: '%{{{name}}/{{version}}/,}p'
+    };
+    build(opt, function(err) {
+      assets('pathmap', dest);
+      done();
+    });
+  });
+
   it('should clean directory', function(done) {
     var fakeFile = join(dest, 'a.js');
     fs.mkdirSync(dest);
