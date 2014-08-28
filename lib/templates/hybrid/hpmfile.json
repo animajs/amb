@@ -1,0 +1,40 @@
+{
+  "appid": "",
+  "name": "AnimaHybrid",
+  "version": "1.0.0.0",
+  "author": "",
+  "description": "AnimaHybrid",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "launchParams": {
+    "url": "/www/index.html",
+    "showTitleBar": "YES",
+    "showToolBar": "NO",
+    "showLoading": "NO"
+  },
+  "build": {
+    "include": [
+      "./www/**"
+    ],
+    "ignore": [
+      "./**/*.md"
+    ]
+  },
+  "support": {
+    "ios": {
+      "minSDK": "",
+      "maxSDK": "",
+      "minOS": "",
+      "maxOS": ""
+    },
+    "android": {
+      "minSDK": "",
+      "maxSDK": "",
+      "minOS": "",
+      "maxOS": ""
+    }
+  },
+  "dependencies": {}
+}

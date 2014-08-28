@@ -1,0 +1,16 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0",
+  "spm": {
+    "output": [
+      "./index.js",
+      "./index.css",
+      "./index.html",
+      "./img/*"
+    ],
+    "dependencies": {
+    },
+    "buildArgs": "--include standalone"
+  },
+  "amb": {}
+}

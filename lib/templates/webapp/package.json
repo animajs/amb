@@ -1,0 +1,18 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0",
+  "spm": {
+    "output": [
+      "./src/index.js",
+      "./src/index.css",
+      "./index.html",
+      "./img/*"
+    ],
+    "dependencies": {
+      "anima-app": "1.0.0",
+      "anima-yocto": "1.0.1"
+    },
+    "buildArgs": "--include standalone"
+  },
+  "amb": {}
+}

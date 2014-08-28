@@ -1,0 +1,20 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0",
+  "spm": {
+    "output": [
+      "./src/js/main.js",
+      "./src/css/*.css",
+      "./src/*.html",
+      "./src/img/*"
+    ],
+    "dependencies": {
+      "anima-yocto": "1.0.1"
+    },
+    "buildArgs": "--include standalone"
+  },
+  "amb": {
+    "dest": "./www/",
+    "pathmap": "%{{{name}}/{{version}}/,}p"
+  }
+}
