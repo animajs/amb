@@ -1,6 +1,6 @@
 {
   "name": "@alipay/amb",
-  "version": "1.2.3",
+  "version": "2.0.0-beta1",
   "description": "基于 spm 的项目开发工具.",
   "main": "index.js",
   "scripts": {
@@ -60,5 +60,8 @@
     "mocha": "*",
     "request": "~2.40.0",
     "should": "*"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
   }
 }
