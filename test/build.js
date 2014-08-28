@@ -92,6 +92,18 @@ describe('build', function() {
     });
   });
 
+  it('pathmap', function(done) {
+    var opt = {
+      cwd: join(base, 'normal'),
+      dest: dest,
+      pathmap: '%{a/0.1.0/,}p'
+    };
+    build(opt, function(err) {
+      assets('pathmap', dest);
+      done();
+    });
+  });
+
   it('should clean directory', function(done) {
     var fakeFile = join(dest, 'a.js');
     fs.mkdirSync(dest);

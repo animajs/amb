@@ -5,6 +5,9 @@
   // 构建输出目录
   "dest": "./dist/",
 
+  // Rename files
+  "pathmap": null,
+
   // JS 压缩配置项
   // 详见：https://github.com/terinjokes/gulp-uglify/
   "uglifyOpts": {
