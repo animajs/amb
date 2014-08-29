@@ -23,7 +23,7 @@ if (program.weinre) {
   require('coffee-script');
   require('weinre').run({
     httpPort: WEINRE_PORT,
-    boundHost: 'localhost',
+    boundHost: '',
     verbose: false,
     debug: false,
     readTimeout: 5,
