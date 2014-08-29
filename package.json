@@ -1,6 +1,6 @@
 {
   "name": "@alipay/amb",
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-beta2",
   "description": "基于 spm 的项目开发工具.",
   "main": "index.js",
   "scripts": {
