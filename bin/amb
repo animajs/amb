@@ -33,7 +33,12 @@ if (!subcmd) {
   return;
 }
 
-request('http://registry.npm.alibaba-inc.com/@alipay/amb/latest', function(err, res, body) {
+var opts = {
+  url: 'http://registry.npm.alibaba-inc.com/@alipay/amb/latest',
+  timeout: 1000
+};
+
+request(opts, function(err, res, body) {
   if (err) {
     return exec();
   }
