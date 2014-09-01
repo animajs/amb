@@ -11,7 +11,7 @@ program
   .option('--https', 'enable https proxy')
   .option('--livereload', 'enable livereload')
   .option('--weinre', 'enable weinre')
-  .option('--no-open', 'disable open in default browser')
+  .option('--open', 'enable open in default browser')
   .parse(process.argv);
 
 var args = extend(program, {
