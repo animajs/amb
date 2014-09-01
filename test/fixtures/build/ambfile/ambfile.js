@@ -1,6 +1,6 @@
 var through = require('through2');
 
-exports.afterSrc = function(args) {
+exports.startStream = function(args) {
 
   return through.obj(function(file, enc, callback) {
     var code = String(file.contents);
@@ -10,7 +10,7 @@ exports.afterSrc = function(args) {
   });
 };
 
-exports.beforeDest = function(args) {
+exports.endStream = function(args) {
 
   return through.obj(function(file, enc, callback) {
     var code = String(file.contents);
