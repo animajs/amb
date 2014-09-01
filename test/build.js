@@ -88,6 +88,10 @@ describe('build', function() {
     };
     build(opt, function(err) {
       assets('ambfile', dest);
+      fs.readFileSync(join(base, 'ambfile/start'), 'utf-8').should.be.equal('start');
+      fs.readFileSync(join(base, 'ambfile/end'), 'utf-8').should.be.equal('end');
+      fs.unlinkSync(join(base, 'ambfile/start'));
+      fs.unlinkSync(join(base, 'ambfile/end'));
       done();
     });
   });
