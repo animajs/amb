@@ -4,6 +4,8 @@
 
 基于 [spm](http://spmjs.io/) 的项目开发工具，amb v1.x 请访问 http://gitlab.alibaba-inc.com/animajs/amb/tree/1.x
 
+v2 和 v1 的区别详见 [issue#2](http://gitlab.alibaba-inc.com/animajs/amb/issues/2)
+
 ---
 
 ## 安装
