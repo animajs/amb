@@ -125,11 +125,11 @@ $ amb server
 
 ## FAQ
 
-* 如何使得构建生产的路径不包含 name/version/?
+1. 如何使得构建生产的路径不包含 name/version/?
 
   配置 `"pathmap": "%{{{name}}/{{version}},}p"` 。
 
-* 之前的自动上传图片等功能怎么不见了?
+1. 之前的自动上传图片等功能怎么不见了?
 
   没有整合到 amb 里，可以通过 ambfile 定义 `startStream` 或 `endStream` 自行添加。
 
