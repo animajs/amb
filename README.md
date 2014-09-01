@@ -131,7 +131,7 @@ $ amb server
 
 1. 之前的自动上传图片等功能怎么不见了?
 
-  没有整合到 amb 里，可以通过 ambfile 定义 `startStream` 或 `endStream` 自行添加。
+  在 v2 里删除了，没有内置。有需要可以通过 ambfile 定义 `startStream` 或 `endStream` 自行添加。
 
 
 ## License
