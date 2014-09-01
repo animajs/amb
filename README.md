@@ -50,11 +50,11 @@ $ amb install anima-app -S
 $ amb build
 ```
 
-参数：
+#### 参数：
 
 - `-f, --force`，构建前会先清空 dist 目录
 
-package.json 里 amb 的参数：(以下是默认值)
+#### amb 配置：(以下是默认值)
 
 ```javascript
 {
@@ -91,6 +91,14 @@ package.json 里 amb 的参数：(以下是默认值)
   }
 }
 ```
+
+#### ambfile.js
+
+- 自定义任务 `startTask`, `endTask`，需返回函数
+- 自定义流 `startStream`, `endStream`，需返回 Stream
+
+例子：http://gitlab.alibaba-inc.com/animajs/amb/blob/master/test/fixtures/build/ambfile/ambfile.js
+
 
 ### 调试
 
