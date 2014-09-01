@@ -97,7 +97,7 @@ $ amb build
 - 自定义任务 `startTask`, `endTask`，需返回函数
 - 自定义流 `startStream`, `endStream`，需返回 Stream
 
-例子：http://gitlab.alibaba-inc.com/animajs/amb/blob/master/test/fixtures/build/ambfile/ambfile.js
+具体例子：http://gitlab.alibaba-inc.com/animajs/amb/blob/master/test/fixtures/build/ambfile/ambfile.js
 
 
 ### 调试
@@ -112,6 +112,21 @@ $ amb server
 - `--https`，同时开启 https 服务器
 - `--livereload`，开启 livereload 服务器
 - `--weinre`，开启 weinre 服务器
+
+
+## 例子
+
+* [应用 ambfile](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/ambfile)
+* [复制图片](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/copy-img)
+* [使用 less 或 coffee](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/precompile)
+
+
+## FAQ
+
+* 如何使得构建生产的路径不包含 name/version/?
+
+  配置 `"pathmap": "%{{{name}}/{{version}},}p"`
+
 
 ## License
 
