@@ -30,6 +30,14 @@ $ amb init
 
 等价于 `spm install`。
 
+```bash
+# 安装 package.json 里的所有依赖
+$ amb install
+
+# 安装 anima-app，并保存 dependencies 到 package.json
+$ amb install anima-app -S
+```
+
 参数：
 
 - `-f, --force`，强制从源上下载最新的安装，不管本地是否已安装
@@ -42,11 +50,22 @@ $ amb init
 $ amb build
 ```
 
+参数：
+
+- `-f, --force`，构建前会先清空 dist 目录
+
 ### 调试
 
 ```bash
 $ amb server
 ```
+
+参数：
+
+- `-p, --port`，指定端口
+- `--https`，同时开启 https 服务器
+- `--livereload`，开启 livereload 服务器
+- `--weinre`，开启 weinre 服务器
 
 ## License
 
