@@ -24,9 +24,17 @@ $ mkdir foo && cd foo
 $ amb init
 ```
 
+提供 3 套模板供选择，分别是 `simple`, `webapp`, `hybird`，对应各种项目类型。
+
 ### 安装依赖
 
-等价于 `spm install --save`
+等价于 `spm install`。
+
+参数：
+
+- `-f, --force`，强制从源上下载最新的安装，不管本地是否已安装
+- `-S, --save`，保存 dependencies 到 package.json
+- `-SD, --save-dev`，保存 devDependencies 到 package.json
 
 ### 构建
 
