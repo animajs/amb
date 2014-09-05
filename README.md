@@ -3,9 +3,7 @@
 [![](http://gitlab-ci.alibaba-inc.com/projects/140/status.png?ref=master)](http://gitlab-ci.alibaba-inc.com/projects/140?ref=master)
 [![](http://web.npm.alibaba-inc.com/badge/v/@alipay/amb.svg?style=flat-square)](http://web.npm.alibaba-inc.com/package/@alipay/amb)
 
-基于 [spm](http://spmjs.io/) 的项目开发工具，amb v1.x 请访问 http://gitlab.alibaba-inc.com/animajs/amb/tree/1.x
-
-v2 和 v1 的区别详见 [issue#2](http://gitlab.alibaba-inc.com/animajs/amb/issues/2)
+基于 [spm](http://spmjs.io/) 的项目开发工具，详见 http://gitlab.alibaba-inc.com/animajs/amb/issues/2
 
 ---
 
