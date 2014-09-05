@@ -5,7 +5,7 @@ var join = require('path').join;
 exports.startStream = function(args) {
   return through.obj(function(file, enc, callback) {
     var code = String(file.contents);
-    code = code.replace('a@0.1.0', 'ambfile');
+    code = code.replace('a@0.1.0', 'spmfile');
     file.contents = new Buffer(code);
     callback(null, file);
   });
@@ -14,7 +14,7 @@ exports.startStream = function(args) {
 exports.endStream = function(args) {
   return through.obj(function(file, enc, callback) {
     var code = String(file.contents);
-    code = code.replace('ambfile', 'ambfile + dest');
+    code = code.replace('spmfile', 'spmfile + dest');
     file.contents = new Buffer(code);
     callback(null, file);
   });

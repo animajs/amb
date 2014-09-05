@@ -91,12 +91,12 @@ $ amb build
 }
 ```
 
-#### ambfile.js
+#### spmfile.js
 
 - 自定义任务 `startTask`, `endTask`，需返回函数
 - 自定义流 `startStream`, `endStream`，需返回 Stream
 
-具体例子：http://gitlab.alibaba-inc.com/animajs/amb/blob/master/test/fixtures/build/ambfile/ambfile.js
+具体例子：http://gitlab.alibaba-inc.com/animajs/amb/blob/master/test/fixtures/build/spmfile/spmfile.js
 
 
 ### 调试
@@ -115,7 +115,7 @@ $ amb server
 
 ## 例子
 
-* [应用 ambfile](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/ambfile)
+* [应用 spmfile](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/spmfile)
 * [复制图片](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/copy-img)
 * [使用 less 或 coffee](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/precompile)
 
@@ -128,7 +128,7 @@ $ amb server
 
 1. 之前的自动上传图片等功能怎么不见了?
 
-  在 v2 里删除了，没有内置。有需要可以通过 ambfile 定义 `startStream` 或 `endStream` 自行添加。
+  在 v2 里删除了，没有内置。有需要可以通过 spmfile 定义 `startStream` 或 `endStream` 自行添加。
 
 
 ## License
