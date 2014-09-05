@@ -1,6 +1,7 @@
 # amb v2
 
-[![build status](http://gitlab-ci.alibaba-inc.com/projects/140/status.png?ref=master)](http://gitlab-ci.alibaba-inc.com/projects/140?ref=master)
+[![](http://gitlab-ci.alibaba-inc.com/projects/140/status.png?ref=master)](http://gitlab-ci.alibaba-inc.com/projects/140?ref=master)
+[![](http://web.npm.alibaba-inc.com/badge/v/@alipay/amb.svg?style=flat-square)](http://web.npm.alibaba-inc.com/package/@alipay/amb)
 
 基于 [spm](http://spmjs.io/) 的项目开发工具，amb v1.x 请访问 http://gitlab.alibaba-inc.com/animajs/amb/tree/1.x
 
