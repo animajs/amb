@@ -6,8 +6,8 @@ ajs_x_010_a_debug = function () {
 
 if (typeof exports == "object") {
   module.exports = ajs_x_010_a_debug;
-} else if (typeof define == "function" && define.amd) {
-  define([], function(){ return ajs_x_010_a_debug });
+} else if (typeof define == "function" && (define.cmd || define.amd)) {
+  define(function(){ return ajs_x_010_a_debug });
 } else {
   this["aJsX"] = ajs_x_010_a_debug;
 }

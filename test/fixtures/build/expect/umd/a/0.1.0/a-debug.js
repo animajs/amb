@@ -10,8 +10,8 @@ a_010_a_debug = function () {
 
 if (typeof exports == "object") {
   module.exports = a_010_a_debug;
-} else if (typeof define == "function" && define.amd) {
-  define([], function(){ return a_010_a_debug });
+} else if (typeof define == "function" && (define.cmd || define.amd)) {
+  define(function(){ return a_010_a_debug });
 } else {
   this["a"] = a_010_a_debug;
 }
