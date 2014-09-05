@@ -10,7 +10,7 @@ describe('config', function() {
     // custom
     args.registry.should.be.equal('1');
     // default
-    args.dest.should.be.equal('./dist/');
+    (args.pathmap === null).should.be.true;
   });
 
   it('dont pass cwd', function() {
@@ -21,6 +21,6 @@ describe('config', function() {
     // custom
     args.registry.should.be.equal('1');
     // default
-    args.dest.should.be.equal('./dist/');
+    (args.pathmap === null).should.be.true;
   });
 });

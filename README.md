@@ -63,9 +63,6 @@ $ amb build
   // spm 源
   "registry": "http://spm.alipay-inc.com",
 
-  // 构建输出目录
-  "dest": "./dist/",
-
   // Rename files
   // 详见：https://github.com/jeremyruppel/pathmap
   "pathmap": null,
