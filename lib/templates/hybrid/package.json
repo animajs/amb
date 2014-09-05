@@ -11,10 +11,7 @@
     "dependencies": {
       "anima-yocto": "1.0.1"
     },
-    "buildArgs": "--include standalone"
-  },
-  "amb": {
-    "dest": "./www/",
+    "buildArgs": "--include standalone --dest ./www/",
     "pathmap": "%{{{name}}/{{version}}/,}p"
   }
 }

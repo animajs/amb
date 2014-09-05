@@ -1,8 +1,7 @@
 {
   "name": "a",
   "version": "0.1.0",
-  "spm": {},
-  "amb": {
+  "spm": {
     "registry": "1"
   }
 }

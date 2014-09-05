@@ -11,6 +11,5 @@
     "dependencies": {
     },
     "buildArgs": "--include standalone"
-  },
-  "amb": {}
+  }
 }

@@ -13,6 +13,5 @@
       "anima-yocto": "1.0.1"
     },
     "buildArgs": "--include standalone"
-  },
-  "amb": {}
+  }
 }
