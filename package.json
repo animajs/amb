@@ -47,6 +47,7 @@
     "request": "~2.40.0",
     "semver": "~3.0.1",
     "serve-spm": "~0.5.1",
+    "@alipay/spm-build": "~0.1.0",
     "spm-client": "~0.2.4",
     "spm-log": "~0.1.1",
     "spm-server": "~0.2.1",

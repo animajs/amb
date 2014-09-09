@@ -1,1 +1,0 @@
-define("a/0.1.0/a",[],function(){alert(1)});
