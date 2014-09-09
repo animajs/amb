@@ -15,6 +15,7 @@ program
   .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
   .option('--ignore <ignore>', 'determine which id will not be transported')
   .option('-f, --force', 'clean dist directory before build')
+  .option('--with-deps', 'build package in dependencies')
   .option('--no-install', 'disable install')
   .parse(process.argv);
 
@@ -34,35 +35,21 @@ var args = extend(config.get(), {
   force: program.force,
   install: program.install,
   include: program.include,
-  ignore: program.ignore
+  ignore: program.ignore,
+  withDeps: program.withDeps
 });
 
 debug('args', args);
 
-// install and build
-if (args.install) {
-  install(args, function(err) {
-    if (err) {
-      log.error('error', err.message);
-      log.debug('error', err.stack);
-      process.exit(1);
-    }
-    runBuild();
-  });
-} else {
-  runBuild();
-}
-
-function runBuild() {
-  build(args, function(err) {
-    if (err) {
-      log.error('error', err.message);
-      log.debug('error', err.stack);
-      process.exit(1);
-    }
-    log.info('finish', info + showDiff(begin));
-  });
-}
+// build
+build(args, function(err) {
+  if (err) {
+    log.error('error', err.message);
+    log.debug('error', err.stack);
+    process.exit(1);
+  }
+  log.info('finish', info + showDiff(begin));
+});
 
 function showDiff(time) {
   var diff = Date.now() - time;
