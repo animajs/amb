@@ -2,6 +2,16 @@
 
 ---
 
+## 2.1.0
+
+* `improved` 把 build 部分代码抽取到 `spm-build`，和 aspm 共用
+* `spm-build@0.1.0` 添加了 duplicate deps 检查、extDeps 安装、withDeps 处理、autoprefixer 等任务，完整任务详见 http://gitlab.alibaba-inc.com/alipay-tool/aspm/issues/2
+* `bugfix` 修复 simple 模板依赖未声明的 bug
+
+## 2.0.0
+
+* 重构，详见 gitlab.alibaba-inc.com/animajs/amb/issues/2
+
 ## 1.2.2
 
 * `bugfix` 修复 clean bug，没有正确处理依赖
