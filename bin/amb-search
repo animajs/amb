@@ -5,7 +5,6 @@ var commander = require('commander');
 var log = require('spm-log');
 var print = require('../lib/utils/print');
 var search = require('../lib/client').search;
-var config = require('../lib/config');
 
 commander
   .usage('[options] <query>')
@@ -34,7 +33,7 @@ log.config(commander);
 
 search({
   name: commander.args[0],
-  registry: commander.registry || config.get().registry,
+  registry: commander.registry || require('../lib/config.json').registry,
 }, function(err, body) {
   if (err) {
     log.error('exit', err.message);

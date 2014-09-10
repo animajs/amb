@@ -5,10 +5,8 @@ require('colorful').colorful();
 var debug = require('debug')('amb:build');
 var join = require('path').join;
 var program = require('commander');
-var extend = require('extend');
 var log = require('spm-log');
 var build = require('@alipay/spm-build');
-var config = require('../lib/config');
 var install = require('../lib/client').install;
 
 program
@@ -30,14 +28,14 @@ var info = ('build ' + p.name + '@' + p.version).to.magenta.color;
 var begin = Date.now();
 log.info('start', info);
 
-var args = extend(config.get(), {
+var args = {
   cwd: process.cwd(),
   force: program.force,
   install: program.install,
   include: program.include,
   ignore: program.ignore,
   withDeps: program.withDeps
-});
+};
 
 debug('args', args);
 

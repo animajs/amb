@@ -9,7 +9,6 @@ var whoami = require('whoami');
 var gulp = require('gulp');
 var gulpTemplate = require('gulp-template');
 var log = require('spm-log');
-var config = require('../lib/config');
 var install = require('../lib/client').install;
 
 var cwd = process.cwd();
@@ -49,7 +48,7 @@ inquirer.prompt([{
       // spm install
       console.log();
       install({
-        registry: config.get().registry,
+        registry: require('../lib/config.json').registry,
         cwd: cwd
       }, function(err) {
         if (err) {
