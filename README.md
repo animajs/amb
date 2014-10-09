@@ -116,9 +116,9 @@ $ amb server
 
 ## 例子
 
-* [应用 spmfile](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/spmfile)
-* [复制图片](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/copy-img)
-* [使用 less 或 coffee](http://gitlab.alibaba-inc.com/animajs/amb/tree/master/test/fixtures/build/precompile)
+* [应用 spmfile](http://gitlab.alibaba-inc.com/alipay-tool/spm-build/tree/master/test/fixtures/spmfile)
+* [复制图片](http://gitlab.alibaba-inc.com/alipay-tool/spm-build/tree/master/test/fixtures/copy-img)
+* [使用 less 或 coffee](http://gitlab.alibaba-inc.com/alipay-tool/spm-build/tree/master/test/fixtures/precompile)
 
 
 ## FAQ
