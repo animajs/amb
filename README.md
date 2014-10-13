@@ -97,7 +97,7 @@ $ amb build
 - 自定义任务 `startTask`, `endTask`，需返回函数
 - 自定义流 `startStream`, `endStream`，需返回 Stream
 
-具体例子：http://gitlab.alibaba-inc.com/animajs/amb/blob/master/test/fixtures/build/spmfile/spmfile.js
+具体例子：http://gitlab.alibaba-inc.com/alipay-tool/spm-build/blob/master/test/fixtures/spmfile/spmfile.js
 
 
 ### 调试
