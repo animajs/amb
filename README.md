@@ -88,7 +88,11 @@ $ amb build
   // 详见：https://github.com/wearefractal/gulp-coffee
   "coffeeOpts": {
     "bare": true
-  }
+  },
+
+  // autoprefixer 配置项, 默认关闭
+  // https://github.com/sindresorhus/gulp-autoprefixer
+  "autoprefixer": false
 }
 ```
 
