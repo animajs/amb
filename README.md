@@ -78,7 +78,9 @@ $ amb build
 
   // CSS 压缩配置项
   // 详见：https://github.com/GoalSmashers/clean-css
-  "cssminOpts": null,
+  "cssminOpts": {
+    "noAdvanced": true
+  },
 
   // less 编译配置项
   // 详见：https://github.com/plus3network/gulp-less

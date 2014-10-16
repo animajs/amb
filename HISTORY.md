@@ -2,6 +2,18 @@
 
 ---
 
+## 2.1.1
+
+* `spm-build@0.1.1 - spm-build@0.1.4`
+    - 修复配置项不能 merge 二级配置的问题
+    - cssminOpts 默认设置 noAdvanced 为 true, http://gitlab.alibaba-inc.com/animajs/amb/issues/10 (由于 clean-css 的一个 bug，而这个 bugfix 的版本要到 3.0 才发布，时间未知)
+    - 默认不开启 autoprefixer, http://gitlab.alibaba-inc.com/animajs/amb/issues/9
+    - 修复 windows 下 pathmap 失效的问题
+    - 不用 gulp-load-plugin 来载入 gulp 插件，他在处理 @alipay 下的 node_modules 时有问题
+    - 添加 package 解析出错时的提示
+* `cmdclean@0.2.6`
+    - 修复 umd wrap 的包在打包时处理不正确的问题
+
 ## 2.1.0
 
 * `improved` 把 build 部分代码抽取到 `spm-build`，和 aspm 共用
