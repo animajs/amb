@@ -1,19 +1,13 @@
-# amb v2
+# amb
 
-[![](http://gitlab-ci.alibaba-inc.com/projects/140/status.png?ref=master)](http://gitlab-ci.alibaba-inc.com/projects/140?ref=master)
-[![](http://web.npm.alibaba-inc.com/badge/v/@alipay/amb.svg?style=flat-square)](http://web.npm.alibaba-inc.com/package/@alipay/amb)
-
-基于 [spm](http://spmjs.io/) 的项目开发工具，详见 http://gitlab.alibaba-inc.com/animajs/amb/issues/2
+基于 [spm](http://spmjs.io/) 的项目开发工具。
 
 ---
 
 ## 安装
 
-注意：`必须`用 tnpm 安装
-
 ```bash
-$ npm install tnpm -g --registry=http://registry.npm.alibaba-inc.com
-$ tnpm install @alipay/amb -g
+$ npm install amb -g
 ```
 
 ## 使用
@@ -25,7 +19,7 @@ $ mkdir foo && cd foo
 $ amb init
 ```
 
-提供 3 套模板供选择，分别是 `simple`, `webapp`, `hybird`，对应各种项目类型。
+提供 3 套模板供选择，分别是 `simple`, `webapp`, 对应各种项目类型。
 
 ### 安装依赖
 
@@ -47,7 +41,7 @@ $ amb install anima-app -S
 
 ### 构建
 
-详见：[build@spm-handbook-plus](http://groups.alidemo.cn/alipay-tool/spm-handbook-plus/book/build.html)
+TODO
 
 ### 调试
 

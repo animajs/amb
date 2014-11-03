@@ -29,8 +29,7 @@ inquirer.prompt([{
   default: 'simple',
   choices: [
     'simple',
-    'webapp',
-    'hybrid'
+    'webapp'
   ]
 }], function(data) {
 

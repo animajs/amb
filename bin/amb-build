@@ -6,8 +6,7 @@ var debug = require('debug')('amb:build');
 var join = require('path').join;
 var program = require('commander');
 var log = require('spm-log');
-var build = require('@alipay/spm-build');
-var install = require('../lib/client').install;
+var build = require('../lib/build');
 
 program
   .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')

@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:animajs/amb.git"
+    "url": "https://github.com/animajs/amb.git"
   },
   "author": "chencheng <sorrycc@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "http://gitlab.alibaba-inc.com/animajs/amb/issues"
+    "url": "https://github.com/animajs/amb/issues"
   },
-  "homepage": "http://gitlab.alibaba-inc.com/animajs/amb",
+  "homepage": "https://github.com/animajs/amb",
   "dependencies": {
     "array-uniq": "~1.0.0",
     "checkonline": "~0.3.0",
