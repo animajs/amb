@@ -1,0 +1,7 @@
+{
+  "name": "alipay-xbox",
+  "version": "1.2.0",
+  "spm": {
+    "main": "xbox.js"
+  }
+}

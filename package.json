@@ -1,5 +1,5 @@
 {
-  "name": "@alipay/amb",
+  "name": "amb",
   "version": "2.1.1",
   "description": "基于 spm 的项目开发工具.",
   "main": "index.js",
@@ -21,6 +21,7 @@
   "homepage": "http://gitlab.alibaba-inc.com/animajs/amb",
   "dependencies": {
     "array-uniq": "~1.0.0",
+    "checkonline": "~0.3.0",
     "co": "~3.1.0",
     "coffee-script": "~1.3.3",
     "colorful": "~2.1.0",
@@ -29,6 +30,7 @@
     "extend": "~1.3.0",
     "glob": "~4.0.5",
     "gulp": "~3.6.2",
+    "gulp-autoprefixer": "~1.0.1",
     "gulp-clean": "~0.3.1",
     "gulp-coffee": "~2.1.2",
     "gulp-cssmin": "~0.1.6",
@@ -37,6 +39,7 @@
     "gulp-load-plugins": "~0.6.0",
     "gulp-mirror": "~0.3.0",
     "gulp-pathmap": "~0.1.0",
+    "gulp-slash": "~1.1.3",
     "gulp-template": "~1.0.0",
     "gulp-transport": "~0.7.0",
     "gulp-uglify": "~0.3.2",
@@ -47,11 +50,11 @@
     "request": "~2.40.0",
     "semver": "~3.0.1",
     "serve-spm": "~0.5.1",
-    "@alipay/spm-build": "~0.1.0",
     "spm-client": "~0.2.4",
     "spm-log": "~0.1.1",
     "spm-server": "~0.2.1",
     "spm-standalonify": "~0.1.0",
+    "spmrc": "~1.2.0",
     "through2": "~0.6.1",
     "umi": "~0.6.0",
     "weinre": "~2.0.0-pre-HZ79PDUK",
@@ -62,9 +65,7 @@
     "istanbul": "*",
     "mocha": "*",
     "request": "~2.40.0",
-    "should": "*"
-  },
-  "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
+    "should": "*",
+    "sinon": "~1.11.1"
   }
 }

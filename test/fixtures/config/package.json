@@ -1,0 +1,12 @@
+{
+  "name": "a",
+  "version": "0.1.0",
+  "spm": {
+    "registry": "1",
+    "cssminOpts": {},
+    "coffeeOpts": {
+      "bare": false
+    },
+    "autoprefixer": true
+  }
+}
