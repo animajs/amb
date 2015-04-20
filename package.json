@@ -1,6 +1,6 @@
 {
   "name": "amb",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "基于 spm 的项目开发工具.",
   "main": "index.js",
   "scripts": {
