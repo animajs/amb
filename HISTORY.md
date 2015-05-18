@@ -2,6 +2,10 @@
 
 ---
 
+## 2.1.3
+
+* update config
+
 ## 2.1.2
 
 * update config
